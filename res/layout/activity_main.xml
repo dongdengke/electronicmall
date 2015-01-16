@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <!-- 标题容器 :需要处理三个标题内容 -->
+
+    <include
+        android:id="@+id/ii_title"
+        layout="@layout/title_common" />
+
+    <!-- 底部导航 ：需要处理两个 -->
+
+    <include
+        android:id="@+id/ii_bottom"
+        layout="@layout/bottom_common" />
+
+<!--     <include -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:layout_above="@id/ii_bottom" -->
+<!--         android:layout_below="@id/ii_title" -->
+<!--         layout="@layout/mid_home" /> -->
+
+    <RelativeLayout
+        android:id="@+id/middle"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+       android:layout_above="@id/ii_bottom"
+        android:layout_below="@id/ii_title"
+        android:background="@color/white" >
+    </RelativeLayout>
+
+</RelativeLayout>
