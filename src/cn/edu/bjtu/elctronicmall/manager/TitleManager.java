@@ -1,5 +1,10 @@
 package cn.edu.bjtu.elctronicmall.manager;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import org.apache.commons.lang3.StringUtils;
+
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +19,7 @@ import cn.edu.bjtu.elctronicmall.R;
  * @author dong
  * 
  */
-public class TitleManager {
+public class TitleManager implements Observer {
 	// 顶部导航，单例
 	private TitleManager() {
 
@@ -132,6 +137,31 @@ public class TitleManager {
 
 	public void setTv_two_name(TextView tv_two_name) {
 		this.tv_two_name = tv_two_name;
+	}
+
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		if (data != null) {
+			if (StringUtils.isNumeric(data.toString())) {
+				int id = Integer.parseInt(data.toString());
+				switch (id) {
+				case 1:
+					showHome();
+					break;
+				case 2:
+					showOneText();
+					break;
+				// case GlobalData.PANICBUYINGVIEW:
+				// case GlobalData.SALESVIEW:
+				// showOneTitle();
+				// break;
+
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 }

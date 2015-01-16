@@ -37,6 +37,6 @@ public class SecondView extends BaseView {
 	@Override
 	public int getId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 }

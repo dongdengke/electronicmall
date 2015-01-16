@@ -1,5 +1,10 @@
 package cn.edu.bjtu.elctronicmall.manager;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import org.apache.commons.lang3.StringUtils;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -15,7 +20,7 @@ import cn.edu.bjtu.elctronicmall.view.SecondView;
  * @author dong
  * 
  */
-public class BottomManager {
+public class BottomManager implements Observer {
 	private ImageView iv_home;
 	private ImageView iv_search;
 	private ImageView iv_cart;
@@ -91,8 +96,9 @@ public class BottomManager {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				SecondView secondView = new SecondView(getContext());
-				UIManager.getInstance().changeView(secondView);
+				// SecondView secondView = new SecondView(getContext());
+				// 每次点击都会创建secondView实例，改用反射来完成
+				UIManager.getInstance().changeView(SecondView.class);
 			}
 		});
 	}
@@ -113,5 +119,30 @@ public class BottomManager {
 
 	public Context getContext() {
 		return linerlayout_bottom.getContext();
+	}
+
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		if (data != null) {
+			if (StringUtils.isNumeric(data.toString())) {
+				int id = Integer.parseInt(data.toString());
+				switch (id) {
+				case 1:
+					showBottom();
+					break;
+				case 2:
+					hiddenBottom();
+					break;
+				// case GlobalData.PANICBUYINGVIEW:
+				// case GlobalData.SALESVIEW:
+				// showOneTitle();
+				// break;
+
+				default:
+					break;
+				}
+			}
+		}
 	}
 }
