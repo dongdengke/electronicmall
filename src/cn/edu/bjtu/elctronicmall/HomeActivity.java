@@ -11,6 +11,7 @@ import cn.edu.bjtu.elctronicmall.manager.BottomManager;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
 import cn.edu.bjtu.elctronicmall.manager.UIManager;
 import cn.edu.bjtu.elctronicmall.view.FirstView;
+import cn.edu.bjtu.elctronicmall.view.HomeView;
 
 public class HomeActivity extends Activity {
 	// Handler handler = new Handler() {
@@ -38,11 +39,11 @@ public class HomeActivity extends Activity {
 		UIManager.getInstance().addObserver(BottomManager.getInstance());
 		UIManager.getInstance().addObserver(TitleManager.getInstance());
 		TitleManager.getInstance().init(this);
-		TitleManager.getInstance().showOneText();
+		TitleManager.getInstance().showHome();
 		BottomManager.getInstance().init(this);
 		BottomManager.getInstance().showBottom();
 		// addFirstView();
-		UIManager.getInstance().changeView(FirstView.class);
+		UIManager.getInstance().changeView(HomeView.class);
 		// handler.sendEmptyMessageDelayed(10, 2000);
 	}
 
