@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="#ffffff"
+    android:gravity="center_vertical" >
+
+    <ImageView
+        android:id="@+id/iv_panic_icon"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+       />
+
+    <TextView
+        android:id="@+id/tv_panic_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_panic_icon"
+        android:text="豆奶粉"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_panic_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_panic_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_panic_icon"
+        android:text="$68.00"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_panic_newprice_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_panic_price"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_panic_icon"
+        android:text="限时特价:"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+    
+    <TextView
+        android:id="@+id/tv_panic_newprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_panic_price"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_panic_newprice_text"
+        android:text="￥48.00"
+        android:textColor="#ff0000"
+        android:textSize="16sp" />
+        <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/tv_panic_newprice"
+        android:src="@drawable/enter" />
+
+    <TextView
+        android:id="@+id/tv_panic_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_panic_newprice"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_panic_icon"
+        android:text="剩余时间:"
+        android:textColor="#ff0000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_panic_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_panic_newprice"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_panic_time_text"
+        android:text="03:30:15"
+        android:textColor="#ff0000"
+        android:textSize="16sp" />
+    <Button 
+        android:id="@+id/btn_panic_buy"
+        android:onClick="buy"
+        android:layout_toRightOf="@id/tv_panic_time"
+        android:layout_width="85dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/buy"
+        android:layout_marginTop="65dp"
+        android:text="立即抢购"/>
+
+
+
+</RelativeLayout>
