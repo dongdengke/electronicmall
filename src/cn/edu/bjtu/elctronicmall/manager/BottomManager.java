@@ -131,6 +131,7 @@ public class BottomManager implements Observer {
 				switch (id) {
 				case GlobalData.HOMEVIEW:
 				case GlobalData.PANICBUYINGVIEW:
+				case GlobalData.SALESVIEW:
 					showBottom();
 					break;
 				case 2:

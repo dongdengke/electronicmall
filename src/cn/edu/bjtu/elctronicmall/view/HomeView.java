@@ -85,7 +85,7 @@ public class HomeView extends BaseView {
 					UIManager.getInstance().changeVew(PanicBuyingView.class);
 					break;
 				case 1:
-					// UIManager.getInstance().changeVew(SalesView.class);
+					UIManager.getInstance().changeVew(SaleView.class);
 					break;
 				case 2:
 					// Toast.makeText(context, "新品上架商品信息", Toast.LENGTH_SHORT)

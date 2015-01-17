@@ -180,6 +180,7 @@ public class TitleManager implements Observer {
 					showHome();
 					break;
 				case GlobalData.PANICBUYINGVIEW:
+				case GlobalData.SALESVIEW:
 					showOneText();
 					break;
 				// case GlobalData.PANICBUYINGVIEW:
