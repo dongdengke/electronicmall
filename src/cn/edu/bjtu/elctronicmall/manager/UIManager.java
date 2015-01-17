@@ -49,12 +49,11 @@ public class UIManager extends Observable {
 	}
 
 	/**
-	 * 切换界面：切换界面:处理连续点击时，相同界面的切换问题
+	 * 切换界面:处理连续点击时，相同界面的切换问题
 	 * 
 	 * @param secondView
-	 * @return
 	 */
-	public boolean changeView(Class<? extends BaseView> targetViewClazz) {
+	public boolean changeVew(Class<? extends BaseView> targetViewClazz) {
 		// 如果和当前界面相同，不进行界面的切换
 		if (currentView != null && currentView.getClass() == targetViewClazz) {
 			return false;
@@ -102,7 +101,6 @@ public class UIManager extends Observable {
 	 */
 	private void changeTitileAndBottom() {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 		// 方案一
 		// if (currentView.getClass().getSimpleName().equals("HomeView")) {
 		// TitleManager.getInstance().showHomeTitle();
@@ -115,6 +113,7 @@ public class UIManager extends Observable {
 		// 方案二观察者设计模式
 		setChanged();
 		notifyObservers(currentView.getId());
+
 	}
 
 	/**
@@ -122,7 +121,7 @@ public class UIManager extends Observable {
 	 * 
 	 * @param secondView
 	 */
-	public boolean changeView2(Class<? extends BaseView> targetViewClazz) {
+	public boolean changeVew2(Class<? extends BaseView> targetViewClazz) {
 		// 只能创建一次
 		// 创建好的对象需要存储在集合中:便于查询
 		String key = targetViewClazz.getSimpleName();
@@ -159,18 +158,23 @@ public class UIManager extends Observable {
 	 * 切换界面：存在问题，相同的view对象会创建多次，相同界面间会切换，baseview子类中的布局会加载多次
 	 * 
 	 * @param secondView
-	 * @return
 	 */
-	public boolean changeView1(BaseView secondView) {
+	public boolean changeVew1(BaseView targetView) {
+		middle.removeAllViews();
 		// FadeAnimUtil.fadeOut(view1, 2000);
-		View view2 = secondView.getView(getContext());
-		middle.addView(view2);
-		// FadeAnimUtil.fadeIn(view2, 2000, 2000);
-		view2.startAnimation(AnimationUtils.loadAnimation(getContext(),
+		View view = targetView.getView(getContext());
+		middle.addView(view);
+		// FadeAnimUtil.fadeIn(targetView, 2000, 2000);
+		view.startAnimation(AnimationUtils.loadAnimation(getContext(),
 				R.anim.ia_view_change));
 		return true;
 	}
 
+	/**
+	 * 获取上下文对象
+	 * 
+	 * @return
+	 */
 	public Context getContext() {
 		return middle.getContext();
 	}

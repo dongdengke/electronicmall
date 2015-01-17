@@ -12,6 +12,6 @@ public class GloableParams {
 	/**
 	 * 数据库所在位置
 	 */
-	public static final String PATH = "/data/data/cn.edu.bjtu.electronicmall/files/ec.db";
+	public static final String PATH = "/data/data/cn.edu.bjtu.elctronicmall/files/ec.db";
 
 }

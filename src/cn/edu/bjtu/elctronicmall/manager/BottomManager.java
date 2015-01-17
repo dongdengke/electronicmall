@@ -99,7 +99,7 @@ public class BottomManager implements Observer {
 				// TODO Auto-generated method stub
 				// SecondView secondView = new SecondView(getContext());
 				// 每次点击都会创建secondView实例，改用反射来完成
-				UIManager.getInstance().changeView(SecondView.class);
+				UIManager.getInstance().changeVew(SecondView.class);
 			}
 		});
 	}

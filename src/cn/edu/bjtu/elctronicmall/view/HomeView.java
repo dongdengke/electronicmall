@@ -82,7 +82,7 @@ public class HomeView extends BaseView {
 				// TODO Auto-generated method stub
 				switch (position) {
 				case 0:
-					UIManager.getInstance().changeView(PanicBuyingView.class);
+					UIManager.getInstance().changeVew(PanicBuyingView.class);
 					break;
 				case 1:
 					// UIManager.getInstance().changeVew(SalesView.class);

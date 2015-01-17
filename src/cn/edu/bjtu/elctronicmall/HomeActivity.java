@@ -43,7 +43,7 @@ public class HomeActivity extends Activity {
 		BottomManager.getInstance().init(this);
 		BottomManager.getInstance().showBottom();
 		// addFirstView();
-		UIManager.getInstance().changeView(HomeView.class);
+		UIManager.getInstance().changeVew(HomeView.class);
 		// handler.sendEmptyMessageDelayed(10, 2000);
 	}
 
