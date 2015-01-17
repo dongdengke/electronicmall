@@ -8,9 +8,11 @@ import java.util.Observable;
 import org.apache.commons.lang3.StringUtils;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
+import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.view.BaseView;
 
@@ -49,11 +51,109 @@ public class UIManager extends Observable {
 	}
 
 	/**
+	 * 切换界面:参数传递
+	 * 
+	 * @param secondView
+	 */
+	public boolean changeVew(Class<? extends BaseView> targetViewClazz,
+			Bundle bundle) {
+		// 如果和当前界面相同，不进行界面的切换
+		if (currentView != null && currentView.getClass() == targetViewClazz) {
+			return false;
+		}
+		// 只能创建一次
+		// 创建好的对象需要存储在集合中:便于查询
+		String key = targetViewClazz.getSimpleName();
+		BaseView targetView = null;
+		// 如果集合中已经有了该子类对象，则直接使用，如果没有通过反射来获取
+		if (BASEVIEWS.containsKey(key)) {
+			// 已经创建
+			targetView = BASEVIEWS.get(key);
+			targetView.setBundle(bundle);
+		} else {
+			// 自己创建
+			try {
+				Constructor<? extends BaseView> constructor = targetViewClazz
+						.getConstructor(Context.class, Bundle.class);
+				targetView = constructor.newInstance(getContext(), bundle);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// 获取之后进行存储，方便以后使用
+			BASEVIEWS.put(key, targetView);
+		}
+		System.out.println(targetView.toString());
+		middle.removeAllViews();
+		// FadeAnimUtil.fadeOut(view1, 2000);
+		View view = targetView.getView(getContext());
+		middle.addView(view);
+		// FadeAnimUtil.fadeIn(targetView, 2000, 2000);
+		view.startAnimation(AnimationUtils.loadAnimation(getContext(),
+				R.anim.ia_view_change));
+		// 设置当前正在显示的view
+		currentView = targetView;
+		// 更改头部和底部的标题
+		changeTitileAndBottom();
+		// 浏览之后，把记录存放到用户的浏览历史
+		HISTORY.addFirst(key);
+		return true;
+	}
+
+	// /**
+	// * 切换界面:参数传递
+	// *
+	// * @param secondView
+	// */
+	// public boolean changeVew(Class<? extends BaseView> targetViewClazz) {
+	// // 如果和当前界面相同，不进行界面的切换
+	// if (currentView != null && currentView.getClass() == targetViewClazz) {
+	// return false;
+	// }
+	// // 只能创建一次
+	// // 创建好的对象需要存储在集合中:便于查询
+	// String key = targetViewClazz.getSimpleName();
+	// BaseView targetView = null;
+	// // 如果集合中已经有了该子类对象，则直接使用，如果没有通过反射来获取
+	// if (BASEVIEWS.containsKey(key)) {
+	// // 已经创建
+	// targetView = BASEVIEWS.get(key);
+	// } else {
+	// // 自己创建
+	// try {
+	// Constructor<? extends BaseView> constructor = targetViewClazz
+	// .getConstructor(Context.class);
+	// targetView = constructor.newInstance(getContext());
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// // 获取之后进行存储，方便以后使用
+	// BASEVIEWS.put(key, targetView);
+	// }
+	// System.out.println(targetView.toString());
+	// middle.removeAllViews();
+	// // FadeAnimUtil.fadeOut(view1, 2000);
+	// View view = targetView.getView(getContext());
+	// middle.addView(view);
+	// // FadeAnimUtil.fadeIn(targetView, 2000, 2000);
+	// view.startAnimation(AnimationUtils.loadAnimation(getContext(),
+	// R.anim.ia_view_change));
+	// // 设置当前正在显示的view
+	// currentView = targetView;
+	// // 更改头部和底部的标题
+	// changeTitileAndBottom();
+	// // 浏览之后，把记录存放到用户的浏览历史
+	// HISTORY.addFirst(key);
+	// return true;
+	// }
+
+	/**
 	 * 切换界面:处理连续点击时，相同界面的切换问题
 	 * 
 	 * @param secondView
 	 */
-	public boolean changeVew(Class<? extends BaseView> targetViewClazz) {
+	public boolean changeVew4(Class<? extends BaseView> targetViewClazz) {
 		// 如果和当前界面相同，不进行界面的切换
 		if (currentView != null && currentView.getClass() == targetViewClazz) {
 			return false;
@@ -209,6 +309,7 @@ public class UIManager extends Observable {
 				currentView = targetView;
 				// 切换底部和标题容器
 				changeTitileAndBottom();
+				GloableParams.LOOKHISTORY.clear();
 				return true;
 			}
 		}

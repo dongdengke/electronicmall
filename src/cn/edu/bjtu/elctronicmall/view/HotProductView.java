@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -30,8 +31,8 @@ public class HotProductView extends BaseView {
 	private List<Good> goods;
 	private HotProductAdapter adapter;
 
-	public HotProductView(Context context) {
-		super(context);
+	public HotProductView(Context context, Bundle bundle) {
+		super(context, bundle);
 		showView = (ViewGroup) View
 				.inflate(context, R.layout.hot_product, null);
 		TitleManager.getInstance().showOneText();

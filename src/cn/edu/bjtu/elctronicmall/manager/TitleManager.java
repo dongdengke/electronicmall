@@ -125,6 +125,13 @@ public class TitleManager implements Observer {
 	}
 
 	/**
+	 * 一个头部导航都不显示
+	 */
+	public void showNoneTitle() {
+		initTitle();
+	}
+
+	/**
 	 * 设置有一个按钮的头部导航的按钮的text
 	 * 
 	 * @param info
@@ -183,7 +190,15 @@ public class TitleManager implements Observer {
 				case GlobalData.SALESVIEW:
 				case GlobalData.NEWPRODUCTVIEW:
 				case GlobalData.HOTPRODUCTVIEW:
+				case GlobalData.MOREVIEW:
 					showOneText();
+					break;
+				case GlobalData.GOOGINFOVIEW:
+				case GlobalData.CARTVIEW:
+					showTwoText();
+					break;
+				case GlobalData.MYACCOUNTVIEW:
+					showNoneTitle();
 					break;
 				// case GlobalData.PANICBUYINGVIEW:
 				// case GlobalData.SALESVIEW:

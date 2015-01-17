@@ -31,4 +31,20 @@ public class GlobalData {
 	 * 热门商品信息view
 	 */
 	public static final int HOTPRODUCTVIEW = 6;
+	/**
+	 * 商品的详细信息界面
+	 */
+	public static final int GOOGINFOVIEW = 7;
+	/**
+	 * 我的账号界面
+	 */
+	public static final int MYACCOUNTVIEW = 8;
+	/**
+	 * 更多界面
+	 */
+	public static final int MOREVIEW = 9;
+	/**
+	 * 购物车界面
+	 */
+	public static final int CARTVIEW = 10;
 }

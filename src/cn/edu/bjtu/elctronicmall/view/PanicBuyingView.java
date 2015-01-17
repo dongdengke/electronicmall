@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -32,8 +33,8 @@ public class PanicBuyingView extends BaseView {
 	 * 
 	 * @param context
 	 */
-	public PanicBuyingView(Context context) {
-		super(context);
+	public PanicBuyingView(Context context, Bundle bundle) {
+		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.panic_buying,
 				null);
 		// 设置标题的信息

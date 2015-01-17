@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -30,8 +31,8 @@ public class NewProductView extends BaseView {
 	private static final int NEWPRODUCTINDEX = 3;
 	private NewProductAdapter adapter;
 
-	public NewProductView(Context context) {
-		super(context);
+	public NewProductView(Context context, Bundle bundle) {
+		super(context, bundle);
 		showView = (ViewGroup) View
 				.inflate(context, R.layout.new_product, null);
 		// 设置标题的信息

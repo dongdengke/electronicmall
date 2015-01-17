@@ -6,6 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -65,15 +66,20 @@ public class HomeView extends BaseView {
 	// 各大种类的名称
 	private String[] categoryNames = new String[] { "限时抢购", "促销快报", "新品上架",
 			"热门单品", "推荐品牌", "二手商品", "火爆商品" };
+	private HomeCategoryAdapter categoryAdapter;
 
-	public HomeView(final Context context) {
-		super(context);
+	public HomeView(final Context context, Bundle bundle) {
+		super(context, bundle);
 		showView = (LinearLayout) View
 				.inflate(context, R.layout.mid_home, null);
-		initView();
 		lv_category = (ListView) showView.findViewById(R.id.lv_category);
-		HomeCategoryAdapter categoryAdapter = new HomeCategoryAdapter(context,
-				categoryImageIds, categoryNames);
+		categoryAdapter = new HomeCategoryAdapter(context, categoryImageIds,
+				categoryNames);
+		initView();
+
+	}
+
+	private void initView() {
 		lv_category.setAdapter(categoryAdapter);
 		lv_category.setOnItemClickListener(new OnItemClickListener() {
 
@@ -83,16 +89,20 @@ public class HomeView extends BaseView {
 				// TODO Auto-generated method stub
 				switch (position) {
 				case 0:
-					UIManager.getInstance().changeVew(PanicBuyingView.class);
+					UIManager.getInstance().changeVew(PanicBuyingView.class,
+							bundle);
+					bundle = null;
 					break;
 				case 1:
-					UIManager.getInstance().changeVew(SaleView.class);
+					UIManager.getInstance().changeVew(SaleView.class, bundle);
 					break;
 				case 2:
-					UIManager.getInstance().changeVew(NewProductView.class);
+					UIManager.getInstance().changeVew(NewProductView.class,
+							bundle);
 					break;
 				case 3:
-					UIManager.getInstance().changeVew(HotProductView.class);
+					UIManager.getInstance().changeVew(HotProductView.class,
+							bundle);
 					break;
 				case 4:
 					Toast.makeText(context, "暂时没有推荐品牌商品信息", Toast.LENGTH_SHORT)
@@ -125,9 +135,6 @@ public class HomeView extends BaseView {
 				handler.sendEmptyMessage(message.what);
 			}
 		}, 0, 2000);
-	}
-
-	private void initView() {
 		text_hint = (TextView) showView.findViewById(R.id.text_hint);
 		icons = new ArrayList<ImageView>();
 		for (int i = 0; i < imageIds.length; i++) {

@@ -65,6 +65,8 @@
         android:src="@drawable/enter" />
 
     <Button 
+        android:focusable="false"
+        android:clickable="false"
         android:layout_alignParentRight="true"
         android:id="@+id/btn_sale_buy"
         android:layout_width="95dp"

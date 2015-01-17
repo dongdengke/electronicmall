@@ -1,5 +1,7 @@
 package cn.edu.bjtu.elctronicmall;
 
+import java.util.LinkedList;
+
 public class GloableParams {
 	/**
 	 * 代理ip
@@ -13,5 +15,9 @@ public class GloableParams {
 	 * 数据库所在位置
 	 */
 	public static final String PATH = "/data/data/cn.edu.bjtu.elctronicmall/files/ec.db";
+	/**
+	 * 存放用户所浏览过的商品的id
+	 */
+	public static LinkedList<Integer> LOOKHISTORY = new LinkedList<Integer>();
 
 }

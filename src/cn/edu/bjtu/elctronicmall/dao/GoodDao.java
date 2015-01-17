@@ -107,4 +107,45 @@ public class GoodDao {
 		}
 		return goods;
 	}
+
+	/**
+	 * 根据id查询商品
+	 * 
+	 * @param db
+	 * @param id
+	 * @return
+	 */
+	public Good findGoodById(SQLiteDatabase db, int id) {
+		Cursor cursor = db.query("good", new String[] { "name", "pic", "price",
+				"newprice", "commentId", "score", "location", "inventory",
+				"shangjiadate", "fare", "categoryId" }, "id=?",
+				new String[] { id + "" }, null, null, null);
+		Good good = null;
+		while (cursor.moveToNext()) {
+			good = new Good();
+			String name = cursor.getString(0);
+			String pic = cursor.getString(1);
+			double price = cursor.getDouble(2);
+			double newprice = cursor.getDouble(3);
+			int commentId = cursor.getInt(4);
+			int score = cursor.getInt(5);
+			String location = cursor.getString(6);
+			int inventory = cursor.getInt(7);
+			String shangjiadate = cursor.getString(8);
+			double fare = cursor.getDouble(9);
+			int categoryId = cursor.getInt(10);
+			good.setName(name);
+			good.setPic(pic);
+			good.setPrice(price);
+			good.setNewprice(newprice);
+			good.setCommentId(commentId);
+			good.setScore(score);
+			good.setLocation(location);
+			good.setInventory(inventory);
+			good.setShangjiadate(shangjiadate);
+			good.setFare(fare);
+			good.setCategoryId(categoryId);
+		}
+		return good;
+	}
 }

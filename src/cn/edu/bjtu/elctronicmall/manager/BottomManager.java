@@ -7,13 +7,16 @@ import org.apache.commons.lang3.StringUtils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
-import cn.edu.bjtu.elctronicmall.view.SecondView;
+import cn.edu.bjtu.elctronicmall.view.CartView;
+import cn.edu.bjtu.elctronicmall.view.MoreView;
+import cn.edu.bjtu.elctronicmall.view.MyAccountView;
 
 /**
  * 控制底部显示的管理者
@@ -81,15 +84,16 @@ public class BottomManager implements Observer {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				Bundle bundle = new Bundle();
+				UIManager.getInstance().changeVew(CartView.class, bundle);
 			}
 		});
 		iv_myaccount.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				Bundle bundle = new Bundle();
+				UIManager.getInstance().changeVew(MyAccountView.class, bundle);
 			}
 		});
 		iv_more.setOnClickListener(new OnClickListener() {
@@ -99,7 +103,9 @@ public class BottomManager implements Observer {
 				// TODO Auto-generated method stub
 				// SecondView secondView = new SecondView(getContext());
 				// 每次点击都会创建secondView实例，改用反射来完成
-				UIManager.getInstance().changeVew(SecondView.class);
+				// UIManager.getInstance().changeVew(SecondView.class);
+				Bundle bundle = new Bundle();
+				UIManager.getInstance().changeVew(MoreView.class, bundle);
 			}
 		});
 	}
@@ -134,6 +140,10 @@ public class BottomManager implements Observer {
 				case GlobalData.SALESVIEW:
 				case GlobalData.NEWPRODUCTVIEW:
 				case GlobalData.HOTPRODUCTVIEW:
+				case GlobalData.GOOGINFOVIEW:
+				case GlobalData.MYACCOUNTVIEW:
+				case GlobalData.MOREVIEW:
+				case GlobalData.CARTVIEW:
 					showBottom();
 					break;
 				case 2:

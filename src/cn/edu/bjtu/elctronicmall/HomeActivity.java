@@ -10,7 +10,6 @@ import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.manager.BottomManager;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
 import cn.edu.bjtu.elctronicmall.manager.UIManager;
-import cn.edu.bjtu.elctronicmall.view.FirstView;
 import cn.edu.bjtu.elctronicmall.view.HomeView;
 
 public class HomeActivity extends Activity {
@@ -42,16 +41,16 @@ public class HomeActivity extends Activity {
 		TitleManager.getInstance().showHome();
 		BottomManager.getInstance().init(this);
 		BottomManager.getInstance().showBottom();
-		// addFirstView();
-		UIManager.getInstance().changeVew(HomeView.class);
+		Bundle bundle = new Bundle();
+		UIManager.getInstance().changeVew(HomeView.class, bundle);
 		// handler.sendEmptyMessageDelayed(10, 2000);
 	}
 
-	private void addFirstView() {
-		FirstView firstView = new FirstView(this);
-		view1 = firstView.getView(this);
-		middle.addView(view1);
-	}
+	// private void addFirstView() {
+	// FirstView firstView = new FirstView(this,b);
+	// view1 = firstView.getView(this);
+	// middle.addView(view1);
+	// }
 
 	/**
 	 * 返回键的处理

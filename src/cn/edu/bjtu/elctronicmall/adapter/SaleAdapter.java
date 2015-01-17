@@ -72,12 +72,26 @@ public class SaleAdapter extends BaseAdapter {
 			view.setTag(holder);
 		}
 		// 设置数据
-		Good good = saleGoods.get(position);
+		final Good good = saleGoods.get(position);
 		// 设置显示图片
 		show(holder.iv_sale_icon, good.getPic());
 		holder.tv_sale_name.setText(good.getName());
 		holder.tv_sale_price.setText(good.getPrice() + "");
 		holder.tv_sale_newprice.setText(good.getNewprice() + "");
+		// 点击之后进入商品的详细信息界面，让用户加入购物车
+		// holder.btn_sale_buy.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// Bundle bundle = new Bundle();
+		// bundle.putInt("goodId", good.getId());
+		// // GloableParams.LOOKHISTORY.addFirst(good.getId());
+		// UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
+		// // GloableParams.LOOKHISTORY.clear();
+		// // notifyDataSetChanged();
+		// }
+		// });
 		return view;
 	}
 

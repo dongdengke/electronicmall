@@ -5,8 +5,11 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
@@ -16,6 +19,7 @@ import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.BottomManager;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 public class SaleView extends BaseView {
 	private SQLiteDatabase database;
@@ -24,8 +28,8 @@ public class SaleView extends BaseView {
 	private List<Good> goods = new ArrayList<Good>();
 	private SaleAdapter adapter;
 
-	public SaleView(Context context) {
-		super(context);
+	public SaleView(Context context, Bundle bundle) {
+		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.sale, null);
 		lv_sale = (ListView) showView.findViewById(R.id.lv_sale);
 		// 设置标题头
@@ -42,6 +46,17 @@ public class SaleView extends BaseView {
 		goods = dao.findGoodByCategory(database, 2);
 		adapter = new SaleAdapter(goods, context);
 		lv_sale.setAdapter(adapter);
+		lv_sale.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Good good = goods.get(position);
+				bundle.putInt("goodId", good.getId());
+				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
+			}
+		});
 	}
 
 	@Override
