@@ -27,7 +27,7 @@ import cn.edu.bjtu.elctronicmall.bean.Good;
 public class PanicBuyingAdapter extends BaseAdapter {
 	protected static final int TIME = 1;
 	private Context context;
-	private List<cn.edu.bjtu.elctronicmall.bean.Good> panicGoods;
+	private List<Good> panicGoods;
 
 	public PanicBuyingAdapter(List<Good> panicGoods, Context context) {
 		this.context = context;

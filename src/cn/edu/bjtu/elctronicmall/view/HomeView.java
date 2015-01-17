@@ -90,7 +90,7 @@ public class HomeView extends BaseView {
 				case 2:
 					// Toast.makeText(context, "新品上架商品信息", Toast.LENGTH_SHORT)
 					// .show();
-					// UIManager.getInstance().changeVew(NewProductView.class);
+					UIManager.getInstance().changeVew(NewProductView.class);
 					break;
 				case 3:
 					// Toast.makeText(context, "热门商品信息", Toast.LENGTH_SHORT)

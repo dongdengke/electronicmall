@@ -23,4 +23,8 @@ public class GlobalData {
 	 * 促销品牌
 	 */
 	public static final int SALESVIEW = 4;
+	/**
+	 * 新品上架view
+	 */
+	public static final int NEWPRODUCTVIEW = 5;
 }
