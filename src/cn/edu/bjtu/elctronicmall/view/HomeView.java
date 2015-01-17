@@ -21,6 +21,7 @@ import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.HomeCategoryAdapter;
 import cn.edu.bjtu.elctronicmall.adapter.ViewPagerAdapter;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 /**
  * 主界面的中间部分
@@ -81,7 +82,7 @@ public class HomeView extends BaseView {
 				// TODO Auto-generated method stub
 				switch (position) {
 				case 0:
-					// UIManager.getInstance().changeVew(PanicBuyingView.class);
+					UIManager.getInstance().changeView(PanicBuyingView.class);
 					break;
 				case 1:
 					// UIManager.getInstance().changeVew(SalesView.class);

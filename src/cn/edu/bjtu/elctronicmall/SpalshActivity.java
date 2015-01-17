@@ -197,8 +197,6 @@ public class SpalshActivity extends Activity {
 		tv_splash_version.setText("版本号:" + getVersion());
 		relativeLayout = (RelativeLayout) findViewById(R.id.relativelayout);
 		tv_splash_progress = (TextView) findViewById(R.id.tv_splash_progress);
-		// 把raw下的图片拷贝到sdcard中
-		copyRawToSdcard();
 		// 检查版本下载更新
 		checkVersionTask();
 		// 实现splash界面的动画效果
@@ -207,6 +205,8 @@ public class SpalshActivity extends Activity {
 		relativeLayout.startAnimation(aa);
 		// 创建快捷图标
 		installShortCut();
+		// 把raw下的图片拷贝到sdcard中
+		copyRawToSdcard();
 		// 把数据库拷贝到/data/data/cn.edu.bjtu.electronicmall/files/ec.db
 		copyAssetDBFile("ec.db");
 	}
@@ -254,7 +254,7 @@ public class SpalshActivity extends Activity {
 			public void run() {
 				int code;
 				try {
-					String path = "http://172.28.20.234:8080/ecupdate.xml";
+					String path = "http://172.28.33.19:8080/ecupdate.xml";
 					URL url = new URL(path);
 					HttpURLConnection conn = (HttpURLConnection) url
 							.openConnection();
@@ -348,9 +348,9 @@ public class SpalshActivity extends Activity {
 		startActivityForResult(intent, 0);
 	}
 
-	// /**
-	// * 首次加载时把raw下的图片拷贝到sdcard中
-	// */
+	/**
+	 * 首次加载时把raw下的图片拷贝到sdcard中
+	 */
 	private void copyRawToSdcard() {
 		Field[] fields = R.raw.class.getFields();
 		if (Environment.getExternalStorageState().equals(
@@ -401,6 +401,7 @@ public class SpalshActivity extends Activity {
 				e.printStackTrace();
 				Toast.makeText(this, "服务器端繁忙，请稍后重试", Toast.LENGTH_SHORT).show();
 			}
+
 		}
 	}
 

@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import cn.edu.bjtu.elctronicmall.R;
+import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.view.SecondView;
 
 /**
@@ -128,7 +129,8 @@ public class BottomManager implements Observer {
 			if (StringUtils.isNumeric(data.toString())) {
 				int id = Integer.parseInt(data.toString());
 				switch (id) {
-				case 1:
+				case GlobalData.HOMEVIEW:
+				case GlobalData.PANICBUYINGVIEW:
 					showBottom();
 					break;
 				case 2:

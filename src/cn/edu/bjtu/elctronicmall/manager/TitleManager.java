@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.edu.bjtu.elctronicmall.R;
+import cn.edu.bjtu.elctronicmall.global.GlobalData;
 
 /**
  * 控制顶部显示的管理者
@@ -123,20 +124,49 @@ public class TitleManager implements Observer {
 		relativeLayout_two.setVisibility(View.GONE);
 	}
 
-	public TextView getTv_one_name() {
-		return tv_one_name;
+	/**
+	 * 设置有一个按钮的头部导航的按钮的text
+	 * 
+	 * @param info
+	 */
+	public void setButtonText(String info) {
+		btn_name.setText(info);
 	}
 
-	public void setTv_one_name(TextView tv_one_name) {
-		this.tv_one_name = tv_one_name;
+	/**
+	 * 设置有2个按钮的头部导航的按钮的text
+	 * 
+	 * @param info
+	 */
+	public void setLeftButtonText(String info) {
+		btn_name_left.setText(info);
 	}
 
-	public TextView getTv_two_name() {
-		return tv_two_name;
+	/**
+	 * 设置有2个按钮的头部导航的按钮的text
+	 * 
+	 * @param info
+	 */
+	public void setRightButtonText(String info) {
+		btn_name_right.setText(info);
 	}
 
-	public void setTv_two_name(TextView tv_two_name) {
-		this.tv_two_name = tv_two_name;
+	/**
+	 * 设置顶部有一个按钮导航的名称
+	 * 
+	 * @param info
+	 */
+	public void setOneText(String info) {
+		tv_one_name.setText(info);
+	}
+
+	/**
+	 * 设置顶部有两个按钮导航的名称
+	 * 
+	 * @param info
+	 */
+	public void setTwoText(String info) {
+		tv_two_name.setText(info);
 	}
 
 	@Override
@@ -146,10 +176,10 @@ public class TitleManager implements Observer {
 			if (StringUtils.isNumeric(data.toString())) {
 				int id = Integer.parseInt(data.toString());
 				switch (id) {
-				case 1:
+				case GlobalData.HOMEVIEW:
 					showHome();
 					break;
-				case 2:
+				case GlobalData.PANICBUYINGVIEW:
 					showOneText();
 					break;
 				// case GlobalData.PANICBUYINGVIEW:
