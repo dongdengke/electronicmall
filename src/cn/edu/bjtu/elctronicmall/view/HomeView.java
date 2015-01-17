@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.HomeCategoryAdapter;
 import cn.edu.bjtu.elctronicmall.adapter.ViewPagerAdapter;
@@ -65,7 +66,7 @@ public class HomeView extends BaseView {
 	private String[] categoryNames = new String[] { "限时抢购", "促销快报", "新品上架",
 			"热门单品", "推荐品牌", "二手商品", "火爆商品" };
 
-	public HomeView(Context context) {
+	public HomeView(final Context context) {
 		super(context);
 		showView = (LinearLayout) View
 				.inflate(context, R.layout.mid_home, null);
@@ -88,28 +89,22 @@ public class HomeView extends BaseView {
 					UIManager.getInstance().changeVew(SaleView.class);
 					break;
 				case 2:
-					// Toast.makeText(context, "新品上架商品信息", Toast.LENGTH_SHORT)
-					// .show();
 					UIManager.getInstance().changeVew(NewProductView.class);
 					break;
 				case 3:
-					// Toast.makeText(context, "热门商品信息", Toast.LENGTH_SHORT)
-					// .show();
-					// UIManager.getInstance().changeVew(HotProductView.class);
+					UIManager.getInstance().changeVew(HotProductView.class);
 					break;
 				case 4:
-					// Toast.makeText(context, "推荐品牌商品信息", Toast.LENGTH_SHORT)
-					// .show();
-					// UIManager.getInstance().changeVew(
-					// RecommendedBrandView.class);
+					Toast.makeText(context, "暂时没有推荐品牌商品信息", Toast.LENGTH_SHORT)
+							.show();
 					break;
 				case 5:
-					// Toast.makeText(context, "二手商品信息", Toast.LENGTH_SHORT)
-					// .show();
+					Toast.makeText(context, "二手商品信息还在更新中，敬请期待",
+							Toast.LENGTH_SHORT).show();
 					break;
 				case 6:
-					// Toast.makeText(context, "暂时没有火爆商品信息", Toast.LENGTH_SHORT)
-					// .show();
+					Toast.makeText(context, "暂时没有火爆商品信息", Toast.LENGTH_SHORT)
+							.show();
 					break;
 
 				default:

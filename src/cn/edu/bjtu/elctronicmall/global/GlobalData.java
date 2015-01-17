@@ -27,4 +27,8 @@ public class GlobalData {
 	 * 新品上架view
 	 */
 	public static final int NEWPRODUCTVIEW = 5;
+	/**
+	 * 热门商品信息view
+	 */
+	public static final int HOTPRODUCTVIEW = 6;
 }

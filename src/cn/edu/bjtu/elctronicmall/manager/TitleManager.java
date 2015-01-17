@@ -181,6 +181,8 @@ public class TitleManager implements Observer {
 					break;
 				case GlobalData.PANICBUYINGVIEW:
 				case GlobalData.SALESVIEW:
+				case GlobalData.NEWPRODUCTVIEW:
+				case GlobalData.HOTPRODUCTVIEW:
 					showOneText();
 					break;
 				// case GlobalData.PANICBUYINGVIEW:
