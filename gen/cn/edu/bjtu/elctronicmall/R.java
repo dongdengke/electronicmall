@@ -1683,7 +1683,6 @@ containing a value of this type.
         public static final int end=0x7f060013;
         public static final int expand_activities_button=0x7f060026;
         public static final int expanded_menu=0x7f06002c;
-        public static final int frame_cart=0x7f06004a;
         public static final int go_favor_tv=0x7f06004c;
         public static final int go_home_tv=0x7f06004d;
         public static final int good_viewpager=0x7f06004e;
@@ -1730,6 +1729,7 @@ containing a value of this type.
         public static final int never=0x7f060009;
         public static final int none=0x7f060010;
         public static final int normal=0x7f060000;
+        public static final int parent_frame_id=0x7f06004a;
         public static final int progress_circular=0x7f060018;
         public static final int progress_horizontal=0x7f060019;
         public static final int radio=0x7f06002f;

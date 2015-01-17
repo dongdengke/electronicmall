@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="20.0dip" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_white_def_bg"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10.0dip"
+                        android:text="@string/image_cache"
+                        android:textColor="#ff000000"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/image_measure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16.0dip"
+                        android:text="2.14MB"
+                        android:textColor="#ff000000"
+                        android:textSize="14.0sp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_white_def_bg" >
+
+                    <TextView
+                        android:id="@+id/version_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10.0dip"
+                        android:text="@string/check_update"
+                        android:textColor="#ff000000"
+                        android:textSize="16.0sp" />
+
+                    <ImageView
+                        android:id="@+id/version_new_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5.0dip"
+                        android:visibility="gone"
+                        android:layout_toRightOf="@id/version_title"
+                        android:background="@drawable/version_new"
+                        android:textSize="16.0sp" />
+
+                    <ImageView
+                        android:id="@+id/version_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16.0dip"
+                        android:background="@drawable/arrow_next"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/version_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5.0dip"
+                        android:layout_toLeftOf="@id/version_image"
+                        android:text="1.0"
+                        android:textColor="#ff000000"
+                        android:textSize="14.0sp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_white_def_bg"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:id="@+id/share_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:text="分享给好友"
+                        android:textColor="#ff000000"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/share_to_friend_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_white_def_bg" >
+
+                    <TextView
+                        android:id="@+id/hotline_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10.0dip"
+                        android:text="@string/service_hot_line"
+                        android:textColor="#ff000000"
+                        android:textSize="16.0sp" />
+
+                    <ImageView
+                        android:id="@+id/hotline_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16.0dip"
+                        android:background="@drawable/arrow_next"
+                        android:textColor="#ff000000"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/hotline_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5.0dip"
+                        android:layout_toLeftOf="@id/hotline_image"
+                        android:text="400-88888888"
+                        android:textColor="#ff000000"
+                        android:textSize="16.0sp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/logon_out_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:gravity="center"
+                android:background="@drawable/btn_default_normal"
+                android:text="退出当前账号" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
