@@ -71,6 +71,7 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:singleLine="true"
+                            android:text="dong"
                             android:hint="请输入用户名"
                              />
 
@@ -98,6 +99,7 @@
                         android:layout_marginLeft="15dip"
                         android:gravity="right"
                         android:text="注册密码"
+                        
                         android:textColor="#212121" />
 
                     <EditText
@@ -107,6 +109,7 @@
                         android:layout_marginLeft="15dip"
                         android:password="true"
                         android:singleLine="true"
+                        android:text="123"
                         android:hint="请输入密码"
                         />
                 </LinearLayout>

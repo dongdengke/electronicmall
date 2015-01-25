@@ -3,14 +3,91 @@
     android:id="@+id/parent_frame_id"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:background="#ffdddddd">
+        <TextView 
+            android:id="@+id/tv_count_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数量总计"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"/>
+               <TextView 
+            android:id="@+id/tv_count"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"/>
+               
+                  <TextView 
+                      android:layout_below="@id/tv_count_name"
+            android:id="@+id/tv_score_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="赠送积分"
+                android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"/>
+               <TextView 
+            android:id="@+id/tv_score"
+            android:layout_below="@id/tv_count"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+               
+                       <TextView 
+                      android:layout_below="@id/tv_score_name"
+            android:id="@+id/tv_totalmoney_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品总金额（不含运费）:"
+                android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"/>
+               <TextView 
+            android:id="@+id/tv_totalmoney"
+            android:layout_below="@id/tv_score"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="256.00"
+            android:textColor="#ff0000"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+    <ListView 
+        android:fadingEdge="none"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_cart">
+        
+    </ListView>
+</LinearLayout>
     <LinearLayout
         android:id="@+id/empty_ll"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
 	android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible" >
+        android:visibility="gone" >
 
         <ImageView
             android:layout_width="wrap_content"

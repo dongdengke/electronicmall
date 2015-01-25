@@ -59,4 +59,12 @@ public class GlobalData {
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;
+	/**
+	 * 用户选择的数量
+	 */
+	public static int SELECT_COUNT = -1;
+	/**
+	 * 用户选择的商品的id
+	 */
+	public static Integer SELECT_GOODID = -1;
 }

@@ -71,12 +71,7 @@ public class BottomManager implements Observer {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				iv_home.setImageResource(R.drawable.tab_home_pressed);
-				iv_search
-						.setImageResource(R.drawable.tab_category_search_normal);
-				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
-				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
-				iv_more.setImageResource(R.drawable.tab_more_normal);
+				showHome();
 				UIManager.getInstance().changeVew(HomeView.class, bundle);
 			}
 		});
@@ -85,12 +80,7 @@ public class BottomManager implements Observer {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				iv_home.setImageResource(R.drawable.tab_home_normal);
-				iv_search
-						.setImageResource(R.drawable.tab_category_search_pressed);
-				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
-				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
-				iv_more.setImageResource(R.drawable.tab_more_normal);
+				showSearch();
 				UIManager.getInstance().changeVew(HomeView.class, bundle);
 			}
 		});
@@ -98,12 +88,7 @@ public class BottomManager implements Observer {
 
 			@Override
 			public void onClick(View v) {
-				iv_home.setImageResource(R.drawable.tab_home_normal);
-				iv_search
-						.setImageResource(R.drawable.tab_category_search_normal);
-				iv_cart.setImageResource(R.drawable.tab_shopping_pressed);
-				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
-				iv_more.setImageResource(R.drawable.tab_more_normal);
+				showCart();
 				UIManager.getInstance().changeVew(CartView.class, bundle);
 			}
 		});
@@ -111,12 +96,7 @@ public class BottomManager implements Observer {
 
 			@Override
 			public void onClick(View v) {
-				iv_home.setImageResource(R.drawable.tab_home_normal);
-				iv_search
-						.setImageResource(R.drawable.tab_category_search_normal);
-				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
-				iv_myaccount.setImageResource(R.drawable.tab_myebuy_pressed);
-				iv_more.setImageResource(R.drawable.tab_more_normal);
+				showMyAccount();
 				UIManager.getInstance().changeVew(MyAccountView.class, bundle);
 			}
 		});
@@ -128,12 +108,7 @@ public class BottomManager implements Observer {
 				// SecondView secondView = new SecondView(getContext());
 				// 每次点击都会创建secondView实例，改用反射来完成
 				// UIManager.getInstance().changeVew(SecondView.class);
-				iv_home.setImageResource(R.drawable.tab_home_normal);
-				iv_search
-						.setImageResource(R.drawable.tab_category_search_normal);
-				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
-				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
-				iv_more.setImageResource(R.drawable.tab_more_pressed);
+				showMore();
 				UIManager.getInstance().changeVew(MoreView.class, bundle);
 			}
 		});
@@ -189,5 +164,60 @@ public class BottomManager implements Observer {
 				}
 			}
 		}
+	}
+
+	/**
+	 * home为选中状态
+	 */
+	public void showHome() {
+		iv_home.setImageResource(R.drawable.tab_home_pressed);
+		iv_search.setImageResource(R.drawable.tab_category_search_normal);
+		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+		iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+		iv_more.setImageResource(R.drawable.tab_more_normal);
+	}
+
+	/**
+	 * search为选中状态
+	 */
+	public void showSearch() {
+		iv_home.setImageResource(R.drawable.tab_home_normal);
+		iv_search.setImageResource(R.drawable.tab_category_search_pressed);
+		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+		iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+		iv_more.setImageResource(R.drawable.tab_more_normal);
+	}
+
+	/**
+	 * cart为选中状态
+	 */
+	public void showCart() {
+		iv_home.setImageResource(R.drawable.tab_home_normal);
+		iv_search.setImageResource(R.drawable.tab_category_search_normal);
+		iv_cart.setImageResource(R.drawable.tab_shopping_pressed);
+		iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+		iv_more.setImageResource(R.drawable.tab_more_normal);
+	}
+
+	/**
+	 * myaccount为选中状态
+	 */
+	public void showMyAccount() {
+		iv_home.setImageResource(R.drawable.tab_home_normal);
+		iv_search.setImageResource(R.drawable.tab_category_search_normal);
+		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+		iv_myaccount.setImageResource(R.drawable.tab_myebuy_pressed);
+		iv_more.setImageResource(R.drawable.tab_more_normal);
+	}
+
+	/**
+	 * more为选中状态
+	 */
+	public void showMore() {
+		iv_home.setImageResource(R.drawable.tab_home_normal);
+		iv_search.setImageResource(R.drawable.tab_category_search_normal);
+		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+		iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+		iv_more.setImageResource(R.drawable.tab_more_pressed);
 	}
 }

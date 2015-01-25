@@ -232,10 +232,11 @@ public class GoodInfoView extends BaseView {
 					UIManager.getInstance().changeVew(LoginView.class, bundle);
 				} else {
 					// 进行购物车相关的业务逻辑
-					ed_good_count = (EditText) showView
-							.findViewById(R.id.ed_good_count);
-					String counStr = ed_good_count.getText().toString().trim();
 					try {
+						ed_good_count = (EditText) showView
+								.findViewById(R.id.ed_good_count);
+						String counStr = ed_good_count.getText().toString()
+								.trim();
 						count = Integer.parseInt(counStr);
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
@@ -252,6 +253,14 @@ public class GoodInfoView extends BaseView {
 								Toast.LENGTH_SHORT).show();
 						return;
 					}
+					GlobalData.SELECT_COUNT = count;
+					GlobalData.SELECT_GOODID = GloableParams.LOOKHISTORY
+							.getFirst();
+					// bundle = new Bundle();
+					// bundle.putInt("count", count);
+					// bundle.putInt("goodId",
+					// GloableParams.LOOKHISTORY.getFirst());
+					UIManager.getInstance().changeVew(CartView.class, bundle);
 				}
 			}
 		});
