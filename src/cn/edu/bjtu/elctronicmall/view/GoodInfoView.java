@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.ViewPagerAdapter;
@@ -159,28 +160,19 @@ public class GoodInfoView extends BaseView {
 				handler.sendEmptyMessage(message.what);
 			}
 		}, 0, 2000);
-		tv_good_name = (TextView) showView
-				.findViewById(R.id.tv_good_name);
-		tv_good_price = (TextView) showView
-				.findViewById(R.id.tv_good_price);
+		tv_good_name = (TextView) showView.findViewById(R.id.tv_good_name);
+		tv_good_price = (TextView) showView.findViewById(R.id.tv_good_price);
 		tv_good_newprice = (TextView) showView
 				.findViewById(R.id.tv_good_newprice);
-		ed_good_count = (EditText) showView
-				.findViewById(R.id.ed_good_count);
-		iv_score_1 = (ImageView) showView
-				.findViewById(R.id.iv_score_1);
-		iv_score_2 = (ImageView) showView
-				.findViewById(R.id.iv_score_2);
-		iv_score_3 = (ImageView) showView
-				.findViewById(R.id.iv_score_3);
-		iv_score_4 = (ImageView) showView
-				.findViewById(R.id.iv_score_4);
-		iv_score_5 = (ImageView) showView
-				.findViewById(R.id.iv_score_5);
+
+		iv_score_1 = (ImageView) showView.findViewById(R.id.iv_score_1);
+		iv_score_2 = (ImageView) showView.findViewById(R.id.iv_score_2);
+		iv_score_3 = (ImageView) showView.findViewById(R.id.iv_score_3);
+		iv_score_4 = (ImageView) showView.findViewById(R.id.iv_score_4);
+		iv_score_5 = (ImageView) showView.findViewById(R.id.iv_score_5);
 		tv_good_location = (TextView) showView
 				.findViewById(R.id.tv_good_location);
-		tv_good_remain = (TextView) showView
-				.findViewById(R.id.tv_good_remain);
+		tv_good_remain = (TextView) showView.findViewById(R.id.tv_good_remain);
 		tv_good_comment = (TextView) showView
 				.findViewById(R.id.tv_good_comment);
 		tv_good_name.setText(good.getName());
@@ -231,6 +223,8 @@ public class GoodInfoView extends BaseView {
 		btn_collection = (Button) showView.findViewById(R.id.btn_collection);
 		btn_add_cart.setOnClickListener(new OnClickListener() {
 
+			private int count;
+
 			@Override
 			public void onClick(View v) {
 				if (GlobalData.LOGIN_SUCCES == -1) {
@@ -238,7 +232,26 @@ public class GoodInfoView extends BaseView {
 					UIManager.getInstance().changeVew(LoginView.class, bundle);
 				} else {
 					// 进行购物车相关的业务逻辑
-
+					ed_good_count = (EditText) showView
+							.findViewById(R.id.ed_good_count);
+					String counStr = ed_good_count.getText().toString().trim();
+					try {
+						count = Integer.parseInt(counStr);
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("异常");
+					}
+					if (count <= 0) {
+						Toast.makeText(context, "请至少选择一件商品", Toast.LENGTH_SHORT)
+								.show();
+						return;
+					}
+					if (count > good.getInventory()) {
+						Toast.makeText(context, "库存不足，请稍后重试",
+								Toast.LENGTH_SHORT).show();
+						return;
+					}
 				}
 			}
 		});
