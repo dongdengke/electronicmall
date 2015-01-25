@@ -15,8 +15,12 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.ViewPagerAdapter;
@@ -24,6 +28,7 @@ import cn.edu.bjtu.elctronicmall.bean.Good;
 import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 /**
  * 商品详细信息界面，供用户加入购物车
@@ -60,6 +65,20 @@ public class GoodInfoView extends BaseView {
 			}
 		};
 	};
+	private Button btn_add_cart;
+	private Button btn_collection;
+	private TextView tv_good_name;
+	private TextView tv_good_price;
+	private TextView tv_good_newprice;
+	private EditText ed_good_count;
+	private ImageView iv_score_1;
+	private ImageView iv_score_2;
+	private ImageView iv_score_3;
+	private ImageView iv_score_4;
+	private ImageView iv_score_5;
+	private TextView tv_good_location;
+	private TextView tv_good_remain;
+	private TextView tv_good_comment;
 
 	public GoodInfoView(Context context, Bundle bundle) {
 		super(context, bundle);
@@ -140,6 +159,96 @@ public class GoodInfoView extends BaseView {
 				handler.sendEmptyMessage(message.what);
 			}
 		}, 0, 2000);
+		tv_good_name = (TextView) showView
+				.findViewById(R.id.tv_good_name);
+		tv_good_price = (TextView) showView
+				.findViewById(R.id.tv_good_price);
+		tv_good_newprice = (TextView) showView
+				.findViewById(R.id.tv_good_newprice);
+		ed_good_count = (EditText) showView
+				.findViewById(R.id.ed_good_count);
+		iv_score_1 = (ImageView) showView
+				.findViewById(R.id.iv_score_1);
+		iv_score_2 = (ImageView) showView
+				.findViewById(R.id.iv_score_2);
+		iv_score_3 = (ImageView) showView
+				.findViewById(R.id.iv_score_3);
+		iv_score_4 = (ImageView) showView
+				.findViewById(R.id.iv_score_4);
+		iv_score_5 = (ImageView) showView
+				.findViewById(R.id.iv_score_5);
+		tv_good_location = (TextView) showView
+				.findViewById(R.id.tv_good_location);
+		tv_good_remain = (TextView) showView
+				.findViewById(R.id.tv_good_remain);
+		tv_good_comment = (TextView) showView
+				.findViewById(R.id.tv_good_comment);
+		tv_good_name.setText(good.getName());
+		tv_good_price.setText(good.getPrice() + "");
+		tv_good_newprice.setText(good.getNewprice() + "");
+		tv_good_location.setText(good.getLocation());
+		tv_good_remain.setText(good.getInventory() + "");
+		int score = good.getScore();
+		if (score < 5) {
+			iv_score_1.setImageResource(R.drawable.score_off);
+			iv_score_2.setImageResource(R.drawable.score_off);
+			iv_score_3.setImageResource(R.drawable.score_off);
+			iv_score_4.setImageResource(R.drawable.score_off);
+			iv_score_5.setImageResource(R.drawable.score_off);
+		} else if (score >= 5 && score < 10) {
+			iv_score_1.setImageResource(R.drawable.score_on);
+			iv_score_2.setImageResource(R.drawable.score_off);
+			iv_score_3.setImageResource(R.drawable.score_off);
+			iv_score_4.setImageResource(R.drawable.score_off);
+			iv_score_5.setImageResource(R.drawable.score_off);
+		} else if (score >= 10 && score < 15) {
+			iv_score_1.setImageResource(R.drawable.score_on);
+			iv_score_2.setImageResource(R.drawable.score_on);
+			iv_score_3.setImageResource(R.drawable.score_off);
+			iv_score_4.setImageResource(R.drawable.score_off);
+			iv_score_5.setImageResource(R.drawable.score_off);
+		} else if (score >= 15 && score < 20) {
+			iv_score_1.setImageResource(R.drawable.score_on);
+			iv_score_2.setImageResource(R.drawable.score_on);
+			iv_score_3.setImageResource(R.drawable.score_on);
+			iv_score_4.setImageResource(R.drawable.score_off);
+			iv_score_5.setImageResource(R.drawable.score_off);
+		} else if (score >= 20 && score < 25) {
+			iv_score_1.setImageResource(R.drawable.score_on);
+			iv_score_2.setImageResource(R.drawable.score_on);
+			iv_score_3.setImageResource(R.drawable.score_on);
+			iv_score_4.setImageResource(R.drawable.score_on);
+			iv_score_5.setImageResource(R.drawable.score_off);
+		} else if (score >= 25) {
+			iv_score_1.setImageResource(R.drawable.score_on);
+			iv_score_2.setImageResource(R.drawable.score_on);
+			iv_score_3.setImageResource(R.drawable.score_on);
+			iv_score_4.setImageResource(R.drawable.score_on);
+			iv_score_5.setImageResource(R.drawable.score_on);
+		}
+		// 处理按钮的点击事件
+		btn_add_cart = (Button) showView.findViewById(R.id.btn_add_cart);
+		btn_collection = (Button) showView.findViewById(R.id.btn_collection);
+		btn_add_cart.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (GlobalData.LOGIN_SUCCES == -1) {
+					// 进入登陆界面
+					UIManager.getInstance().changeVew(LoginView.class, bundle);
+				} else {
+					// 进行购物车相关的业务逻辑
+
+				}
+			}
+		});
+		btn_collection.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
 
 	}
 

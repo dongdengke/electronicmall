@@ -58,5 +58,5 @@ public class GlobalData {
 	/**
 	 * 登陆成功的标识
 	 */
-	public static boolean LOGIN_SUCCES = false;
+	public static Integer LOGIN_SUCCES = -1;
 }

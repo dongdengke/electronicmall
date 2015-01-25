@@ -91,7 +91,7 @@ public class LoginView extends BaseView {
 					Toast.makeText(context, "登陆失败", Toast.LENGTH_SHORT).show();
 				} else {
 					// 记录登陆成功
-					GlobalData.LOGIN_SUCCES = true;
+					GlobalData.LOGIN_SUCCES = existUser.getId();
 					Toast.makeText(context, "登陆成功", Toast.LENGTH_SHORT).show();
 					UIManager.getInstance().goBack();
 				}

@@ -169,13 +169,14 @@ public class BottomManager implements Observer {
 				case GlobalData.SALESVIEW:
 				case GlobalData.NEWPRODUCTVIEW:
 				case GlobalData.HOTPRODUCTVIEW:
-				case GlobalData.GOOGINFOVIEW:
+
 				case GlobalData.MYACCOUNTVIEW:
 				case GlobalData.MOREVIEW:
 				case GlobalData.CARTVIEW:
 					showBottom();
 					break;
 				case 2:
+				case GlobalData.GOOGINFOVIEW:
 					hiddenBottom();
 					break;
 				// case GlobalData.PANICBUYINGVIEW:
