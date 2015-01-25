@@ -5,17 +5,16 @@
     android:background="#ffffff"
     android:orientation="vertical" >
 
-
-
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="150dip" >
 
         <android.support.v4.view.ViewPager
             android:id="@+id/good_viewpager"
-                android:background="#ffdddddd"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:background="#ffdddddd" />
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="35dip"
@@ -23,43 +22,171 @@
             android:background="#33000000"
             android:gravity="center"
             android:orientation="horizontal" >
-                <View
-                    android:id="@+id/dot_0"
-                    android:layout_width="8dip"
-                    android:layout_height="8dip"
-                    android:layout_marginLeft="2dip"
-                    android:layout_marginRight="2dip"
-                    android:background="@drawable/dot_focused" />
-                <View
-                    android:id="@+id/dot_1"
-                  android:layout_width="8dip"
-                    android:layout_height="8dip"
-                    android:layout_marginLeft="2dip"
-                    android:layout_marginRight="2dip"
-                    android:background="@drawable/dot_normal" />
-                <View
-                    android:id="@+id/dot_2"
-                     android:layout_width="8dip"
-                    android:layout_height="8dip"
-                    android:layout_marginLeft="2dip"
-                    android:layout_marginRight="2dip"
-                    android:background="@drawable/dot_normal" />
-                <View
-                    android:id="@+id/dot_3"
-                        android:layout_width="8dip"
-                    android:layout_height="8dip"
-                    android:layout_marginLeft="2dip"
-                    android:layout_marginRight="2dip"
-                    android:background="@drawable/dot_normal" />
-                <View
-                    android:id="@+id/dot_4"
-                        android:layout_width="8dip"
-                    android:layout_height="8dip"
-                    android:layout_marginLeft="2dip"
-                    android:layout_marginRight="2dip"
-                    android:background="@drawable/dot_normal" />
-            </LinearLayout>
+
+            <View
+                android:id="@+id/dot_0"
+                android:layout_width="8dip"
+                android:layout_height="8dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:background="@drawable/dot_focused" />
+
+            <View
+                android:id="@+id/dot_1"
+                android:layout_width="8dip"
+                android:layout_height="8dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:background="@drawable/dot_normal" />
+
+            <View
+                android:id="@+id/dot_2"
+                android:layout_width="8dip"
+                android:layout_height="8dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:background="@drawable/dot_normal" />
+
+            <View
+                android:id="@+id/dot_3"
+                android:layout_width="8dip"
+                android:layout_height="8dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:background="@drawable/dot_normal" />
+
+            <View
+                android:id="@+id/dot_4"
+                android:layout_width="8dip"
+                android:layout_height="8dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:background="@drawable/dot_normal" />
+        </LinearLayout>
     </FrameLayout>
-        
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品名称"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="市场价:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_good_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="23.00"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="现价:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_good_newprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="19.00"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="数量:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/tv_good_count"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="商品评分:"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/score_off" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/score_off" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/score_off" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/score_off" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/score_off" />
+        </LinearLayout>
+ 
+    </LinearLayout>
+
+   
 
 </LinearLayout>

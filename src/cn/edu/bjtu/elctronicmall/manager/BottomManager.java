@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.view.CartView;
+import cn.edu.bjtu.elctronicmall.view.HomeView;
 import cn.edu.bjtu.elctronicmall.view.MoreView;
 import cn.edu.bjtu.elctronicmall.view.MyAccountView;
 
@@ -51,6 +52,7 @@ public class BottomManager implements Observer {
 				.findViewById(R.id.linerlayout_bottom);
 
 		iv_home = (ImageView) activity.findViewById(R.id.iv_home);
+		iv_home.setImageResource(R.drawable.tab_home_pressed);
 		iv_search = (ImageView) activity.findViewById(R.id.iv_search);
 		iv_cart = (ImageView) activity.findViewById(R.id.iv_cart);
 		iv_myaccount = (ImageView) activity.findViewById(R.id.iv_myaccount);
@@ -63,12 +65,19 @@ public class BottomManager implements Observer {
 	 */
 	private void setOnClickListener() {
 		// TODO Auto-generated method stub
+		final Bundle bundle = new Bundle();
 		iv_home.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				iv_home.setImageResource(R.drawable.tab_home_pressed);
+				iv_search
+						.setImageResource(R.drawable.tab_category_search_normal);
+				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+				iv_more.setImageResource(R.drawable.tab_more_normal);
+				UIManager.getInstance().changeVew(HomeView.class, bundle);
 			}
 		});
 		iv_search.setOnClickListener(new OnClickListener() {
@@ -76,15 +85,25 @@ public class BottomManager implements Observer {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				iv_home.setImageResource(R.drawable.tab_home_normal);
+				iv_search
+						.setImageResource(R.drawable.tab_category_search_pressed);
+				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+				iv_more.setImageResource(R.drawable.tab_more_normal);
+				UIManager.getInstance().changeVew(HomeView.class, bundle);
 			}
 		});
 		iv_cart.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Bundle bundle = new Bundle();
+				iv_home.setImageResource(R.drawable.tab_home_normal);
+				iv_search
+						.setImageResource(R.drawable.tab_category_search_normal);
+				iv_cart.setImageResource(R.drawable.tab_shopping_pressed);
+				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+				iv_more.setImageResource(R.drawable.tab_more_normal);
 				UIManager.getInstance().changeVew(CartView.class, bundle);
 			}
 		});
@@ -92,7 +111,12 @@ public class BottomManager implements Observer {
 
 			@Override
 			public void onClick(View v) {
-				Bundle bundle = new Bundle();
+				iv_home.setImageResource(R.drawable.tab_home_normal);
+				iv_search
+						.setImageResource(R.drawable.tab_category_search_normal);
+				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+				iv_myaccount.setImageResource(R.drawable.tab_myebuy_pressed);
+				iv_more.setImageResource(R.drawable.tab_more_normal);
 				UIManager.getInstance().changeVew(MyAccountView.class, bundle);
 			}
 		});
@@ -104,7 +128,12 @@ public class BottomManager implements Observer {
 				// SecondView secondView = new SecondView(getContext());
 				// 每次点击都会创建secondView实例，改用反射来完成
 				// UIManager.getInstance().changeVew(SecondView.class);
-				Bundle bundle = new Bundle();
+				iv_home.setImageResource(R.drawable.tab_home_normal);
+				iv_search
+						.setImageResource(R.drawable.tab_category_search_normal);
+				iv_cart.setImageResource(R.drawable.tab_shopping_normal);
+				iv_myaccount.setImageResource(R.drawable.tab_myebuy_normal);
+				iv_more.setImageResource(R.drawable.tab_more_pressed);
 				UIManager.getInstance().changeVew(MoreView.class, bundle);
 			}
 		});

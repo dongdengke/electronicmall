@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
-import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.view.BaseView;
 
@@ -309,7 +308,6 @@ public class UIManager extends Observable {
 				currentView = targetView;
 				// 切换底部和标题容器
 				changeTitileAndBottom();
-				GloableParams.LOOKHISTORY.clear();
 				return true;
 			}
 		}

@@ -56,6 +56,7 @@ public class TitleManager implements Observer {
 		relativeLayout_two = (RelativeLayout) activity
 				.findViewById(R.id.relativeLayout_two);
 		btn_name = (Button) activity.findViewById(R.id.btn_name);
+
 		btn_name_left = (Button) activity.findViewById(R.id.btn_name_left);
 		btn_name_right = (Button) activity.findViewById(R.id.btn_name_right);
 		tv_one_name = (TextView) activity.findViewById(R.id.tv_one_name);

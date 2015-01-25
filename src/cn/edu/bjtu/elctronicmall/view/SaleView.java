@@ -53,7 +53,7 @@ public class SaleView extends BaseView {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				Good good = goods.get(position);
-				// bundle.putInt("goodId", good.getId());
+				GloableParams.LOOKHISTORY.addFirst(good.getId());
 				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
 			}
 		});

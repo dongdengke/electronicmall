@@ -6,19 +6,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.manager.BottomManager;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
 import cn.edu.bjtu.elctronicmall.manager.UIManager;
+import cn.edu.bjtu.elctronicmall.utils.PromptManager;
 import cn.edu.bjtu.elctronicmall.view.HomeView;
 
 public class HomeActivity extends Activity {
-	// Handler handler = new Handler() {
-	// public void handleMessage(android.os.Message msg) {
-	// SecondView secondView = new SecondView(getApplicationContext());
-	// changeView(secondView);
-	// };
-	// };
 	private RelativeLayout middle;
 	private View view1;
 	private View view2;
@@ -43,14 +37,7 @@ public class HomeActivity extends Activity {
 		BottomManager.getInstance().showBottom();
 		Bundle bundle = new Bundle();
 		UIManager.getInstance().changeVew(HomeView.class, bundle);
-		// handler.sendEmptyMessageDelayed(10, 2000);
 	}
-
-	// private void addFirstView() {
-	// FirstView firstView = new FirstView(this,b);
-	// view1 = firstView.getView(this);
-	// middle.addView(view1);
-	// }
 
 	/**
 	 * 返回键的处理
@@ -62,8 +49,7 @@ public class HomeActivity extends Activity {
 			boolean goBack = UIManager.getInstance().goBack();
 			// 如果返回false---首页
 			if (!goBack) {
-				Toast.makeText(getApplicationContext(), "是否退出界面",
-						Toast.LENGTH_SHORT).show();
+				PromptManager.showExitSystem(this);
 			}
 			return goBack;
 		}
