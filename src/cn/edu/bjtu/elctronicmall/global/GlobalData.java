@@ -47,4 +47,16 @@ public class GlobalData {
 	 * 购物车界面
 	 */
 	public static final int CARTVIEW = 10;
+	/**
+	 * 用户注册
+	 */
+	public static final int REGISTERVIEW = 11;
+	/**
+	 * 用户登陆
+	 */
+	public static final int LOGINVIEW = 12;
+	/**
+	 * 登陆成功的标识
+	 */
+	public static boolean LOGIN_SUCCES = false;
 }

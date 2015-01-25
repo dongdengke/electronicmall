@@ -135,7 +135,6 @@ public class HomeView extends BaseView {
 				handler.sendEmptyMessage(message.what);
 			}
 		}, 0, 2000);
-		text_hint = (TextView) showView.findViewById(R.id.text_hint);
 		icons = new ArrayList<ImageView>();
 		for (int i = 0; i < imageIds.length; i++) {
 			ImageView imageView = new ImageView(context);
