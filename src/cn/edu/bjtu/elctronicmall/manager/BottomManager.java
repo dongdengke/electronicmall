@@ -1,5 +1,6 @@
 package cn.edu.bjtu.elctronicmall.manager;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -7,15 +8,20 @@ import org.apache.commons.lang3.StringUtils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
+import cn.edu.bjtu.elctronicmall.bean.Cart;
+import cn.edu.bjtu.elctronicmall.dao.CartDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.view.CartView;
 import cn.edu.bjtu.elctronicmall.view.HomeView;
+import cn.edu.bjtu.elctronicmall.view.LoginView;
 import cn.edu.bjtu.elctronicmall.view.MoreView;
 import cn.edu.bjtu.elctronicmall.view.MyAccountView;
 
@@ -88,8 +94,20 @@ public class BottomManager implements Observer {
 
 			@Override
 			public void onClick(View v) {
-				showCart();
-				UIManager.getInstance().changeVew(CartView.class, bundle);
+				if (GlobalData.LOGIN_SUCCES == -1) {
+					showMyAccount();
+					UIManager.getInstance().changeVew(LoginView.class, bundle);
+					return;
+				}
+				CartDao cartDao = new CartDao();
+				SQLiteDatabase database = SQLiteDatabase.openDatabase(
+						GloableParams.PATH, null, SQLiteDatabase.OPEN_READONLY);
+				List<Cart> cartInfos = cartDao.queryCartByUserId(database,
+						GlobalData.LOGIN_SUCCES);
+				if (cartInfos.size() >= 0) {
+					showCart();
+					UIManager.getInstance().changeVew(CartView.class, bundle);
+				}
 			}
 		});
 		iv_myaccount.setOnClickListener(new OnClickListener() {
@@ -144,11 +162,17 @@ public class BottomManager implements Observer {
 				case GlobalData.SALESVIEW:
 				case GlobalData.NEWPRODUCTVIEW:
 				case GlobalData.HOTPRODUCTVIEW:
+					showHome();
+					break;
 
 				case GlobalData.MYACCOUNTVIEW:
+					showMyAccount();
+					break;
 				case GlobalData.MOREVIEW:
+					showCart();
+					break;
 				case GlobalData.CARTVIEW:
-					showBottom();
+					showCart();
 					break;
 				case 2:
 				case GlobalData.GOOGINFOVIEW:
@@ -170,6 +194,7 @@ public class BottomManager implements Observer {
 	 * home为选中状态
 	 */
 	public void showHome() {
+		showBottom();
 		iv_home.setImageResource(R.drawable.tab_home_pressed);
 		iv_search.setImageResource(R.drawable.tab_category_search_normal);
 		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
@@ -181,6 +206,7 @@ public class BottomManager implements Observer {
 	 * search为选中状态
 	 */
 	public void showSearch() {
+		showBottom();
 		iv_home.setImageResource(R.drawable.tab_home_normal);
 		iv_search.setImageResource(R.drawable.tab_category_search_pressed);
 		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
@@ -192,6 +218,7 @@ public class BottomManager implements Observer {
 	 * cart为选中状态
 	 */
 	public void showCart() {
+		showBottom();
 		iv_home.setImageResource(R.drawable.tab_home_normal);
 		iv_search.setImageResource(R.drawable.tab_category_search_normal);
 		iv_cart.setImageResource(R.drawable.tab_shopping_pressed);
@@ -203,6 +230,7 @@ public class BottomManager implements Observer {
 	 * myaccount为选中状态
 	 */
 	public void showMyAccount() {
+		showBottom();
 		iv_home.setImageResource(R.drawable.tab_home_normal);
 		iv_search.setImageResource(R.drawable.tab_category_search_normal);
 		iv_cart.setImageResource(R.drawable.tab_shopping_normal);
@@ -214,6 +242,7 @@ public class BottomManager implements Observer {
 	 * more为选中状态
 	 */
 	public void showMore() {
+		showBottom();
 		iv_home.setImageResource(R.drawable.tab_home_normal);
 		iv_search.setImageResource(R.drawable.tab_category_search_normal);
 		iv_cart.setImageResource(R.drawable.tab_shopping_normal);

@@ -256,10 +256,6 @@ public class GoodInfoView extends BaseView {
 					GlobalData.SELECT_COUNT = count;
 					GlobalData.SELECT_GOODID = GloableParams.LOOKHISTORY
 							.getFirst();
-					// bundle = new Bundle();
-					// bundle.putInt("count", count);
-					// bundle.putInt("goodId",
-					// GloableParams.LOOKHISTORY.getFirst());
 					UIManager.getInstance().changeVew(CartView.class, bundle);
 				}
 			}
