@@ -141,6 +141,18 @@ public class TitleManager implements Observer {
 		btn_name.setText(info);
 	}
 
+	public Button getBtn_name() {
+		return btn_name;
+	}
+
+	public Button getBtn_name_left() {
+		return btn_name_left;
+	}
+
+	public Button getBtn_name_right() {
+		return btn_name_right;
+	}
+
 	/**
 	 * 设置有2个按钮的头部导航的按钮的text
 	 * 

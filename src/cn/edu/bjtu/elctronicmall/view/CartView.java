@@ -7,9 +7,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
@@ -52,6 +54,15 @@ public class CartView extends BaseView {
 		TitleManager.getInstance().setRightButtonText("去结算");
 		TitleManager.getInstance().setTwoText("购物车");
 		init();
+		TitleManager.getInstance().getBtn_name_right()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						System.out.println("结算--------");
+					}
+				});
 	}
 
 	private void init() {
@@ -79,6 +90,11 @@ public class CartView extends BaseView {
 			lv_cart.setAdapter(adapter);
 			double newprice = good.getNewprice();
 			double totalMoney = count * newprice;
+			TextView tv_count = (TextView) showView.findViewById(R.id.tv_count);
+			TextView tv_totalmoney = (TextView) showView
+					.findViewById(R.id.tv_totalmoney);
+			tv_count.setText(count + "");
+			tv_totalmoney.setText(totalMoney + "");
 			long addGood = cartDao.addGood(database, GlobalData.LOGIN_SUCCES,
 					totalMoney, 0, count);
 			if (addGood != -1) {
