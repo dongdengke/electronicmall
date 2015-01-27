@@ -70,6 +70,14 @@ public class GlobalData {
 	 */
 	public static final int UPDATEADDRESS = 15;
 	/**
+	 * 订单信息
+	 */
+	public static final int ORDERVIEW = 16;
+	/**
+	 * 选择地址
+	 */
+	public static final int SELECT_ADDRESSVIEW = 17;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;
@@ -85,4 +93,8 @@ public class GlobalData {
 	 * 是否保存为默认的标识
 	 */
 	public static SharedPreferences SP;
+	/**
+	 * 购物车id
+	 */
+	public static long CARTID;
 }

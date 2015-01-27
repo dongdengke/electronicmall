@@ -25,14 +25,14 @@ public class AddressDao {
 	 * @param status
 	 * @return
 	 */
-	public long addAddress(SQLiteDatabase database, int userId, String phone,
-			String detailInfo, String zipecode, int status) {
+	public long addAddress(SQLiteDatabase database, Address address) {
 		ContentValues values = new ContentValues();
-		values.put("userId", userId);
-		values.put("phone", phone);
-		values.put("detailInfo", detailInfo);
-		values.put("zipecode", zipecode);
-		values.put("status", status);
+		values.put("userId", address.getUserId());
+		values.put("phone", address.getPhone());
+		values.put("name", address.getName());
+		values.put("detailInfo", address.getDetailInfo());
+		values.put("zipecode", address.getZipecode());
+		values.put("status", address.getStatus());
 		return database.insert("address", null, values);
 	}
 
@@ -69,18 +69,22 @@ public class AddressDao {
 	 */
 	public List<Address> queryAddressByUserId(SQLiteDatabase database,
 			int userId) {
-		Cursor cursor = database.query("address", new String[] { "id",
-				"detailInfo", "zipecode", "status" }, "userId=?",
+		Cursor cursor = database.query("address", new String[] { "id", "name",
+				"phone", "detailInfo", "zipecode", "status" }, "userId=?",
 				new String[] { userId + "" }, null, null, null);
 		List<Address> addressInfos = new ArrayList<Address>();
 		Address address = null;
 		while (cursor.moveToNext()) {
 			int id = cursor.getInt(0);
-			String detailInfo = cursor.getString(1);
-			String zipecode = cursor.getString(2);
-			int status = cursor.getInt(3);
+			String name = cursor.getString(1);
+			String phone = cursor.getString(2);
+			String detailInfo = cursor.getString(3);
+			String zipecode = cursor.getString(4);
+			int status = cursor.getInt(5);
 			address = new Address();
 			address.setId(id);
+			address.setName(name);
+			address.setPhone(phone);
 			address.setDetailInfo(detailInfo);
 			address.setZipecode(zipecode);
 			address.setStatus(status);
@@ -100,19 +104,23 @@ public class AddressDao {
 	 */
 	public Address queryAddressByAddressId(SQLiteDatabase database, int id) {
 		Cursor cursor = database.query("address", new String[] { "userId",
-				"detailInfo", "zipecode", "status" }, "id=?", new String[] { id
-				+ "" }, null, null, null);
+				"detailInfo", "zipecode", "status", "phone", "name" }, "id=?",
+				new String[] { id + "" }, null, null, null);
 		Address address = null;
 		while (cursor.moveToNext()) {
 			int userId = cursor.getInt(0);
 			String detailInfo = cursor.getString(1);
 			String zipecode = cursor.getString(2);
 			int status = cursor.getInt(3);
+			String phone = cursor.getString(4);
+			String name = cursor.getString(5);
 			address = new Address();
 			address.setUserId(userId);
 			address.setDetailInfo(detailInfo);
 			address.setZipecode(zipecode);
 			address.setStatus(status);
+			address.setPhone(phone);
+			address.setName(name);
 		}
 		cursor.close();
 		return address;

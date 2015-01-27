@@ -15,12 +15,14 @@ import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.CartAdapter;
+import cn.edu.bjtu.elctronicmall.bean.Cart;
 import cn.edu.bjtu.elctronicmall.bean.Good;
 import cn.edu.bjtu.elctronicmall.dao.CartDao;
 import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.BottomManager;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 /**
  * 购物车界面
@@ -37,9 +39,10 @@ public class CartView extends BaseView {
 	private ListView lv_cart;
 	private LinearLayout linerlayout_cart_not_empty;
 	private LinearLayout linerlayout_cart_empty;
-	private CartDao cartDao;;
+	private CartDao cartDao;
+	private Cart cart;;
 
-	public CartView(Context context, Bundle bundle) {
+	public CartView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		goods = new LinkedList<Good>();
 		BottomManager.getInstance().showCart();
@@ -47,18 +50,25 @@ public class CartView extends BaseView {
 				SQLiteDatabase.OPEN_READWRITE);
 		dao = new GoodDao(context);
 		showView = (ViewGroup) View.inflate(context, R.layout.cart, null);
+		System.out.println(GlobalData.CARTID + "==============");
 		TitleManager.getInstance().showTwoText();
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("产看订单");
 		TitleManager.getInstance().setTwoText("购物车");
 		init();
+		// 生成订单
 		TitleManager.getInstance().getBtn_name_right()
 				.setOnClickListener(new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						System.out.println("结算--------");
+						// bundle.putInt("addressId", add);
+						// 把购物车id传递到下一个界面
+						// System.out.println(cart.getId() + "-------------");
+						// bundle.putInt("cartId", GlobalData.CARTID);
+						UIManager.getInstance().changeVew(
+								SelectAddressView.class, bundle);
 					}
 				});
 	}
@@ -67,8 +77,6 @@ public class CartView extends BaseView {
 		cartDao = new CartDao();
 		int count = GlobalData.SELECT_COUNT;
 		int goodID = GlobalData.SELECT_GOODID;
-		// List<Cart> cartInfos = cartDao.queryCartByUserId(database,
-		// GlobalData.LOGIN_SUCCES);
 		Good good = dao.findGoodById(database, goodID);
 		goods.addFirst(good);
 		adapter = new CartAdapter(goods, context, count);
@@ -81,12 +89,19 @@ public class CartView extends BaseView {
 				.findViewById(R.id.tv_totalmoney);
 		tv_count.setText(count + "");
 		tv_totalmoney.setText(totalMoney + "");
-		long addGood = cartDao.addGood(database, GlobalData.LOGIN_SUCCES,
-				totalMoney, 0, count);
+		cart = new Cart();
+		cart.setSendScore(0);
+		cart.setTotalMoney(totalMoney);
+		cart.setUserId(GlobalData.LOGIN_SUCCES);
+		cart.setGoodId(goodID);
+		cart.setCount(count);
+
+		long addGood = cartDao.addGood(database, cart);
+		GlobalData.CARTID = addGood;
+		// System.out.println(cart.getGoodId());
 		if (addGood != -1) {
 			Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
 		}
-		// }
 
 	}
 

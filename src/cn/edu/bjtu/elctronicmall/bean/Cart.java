@@ -28,6 +28,15 @@ public class Cart {
 	 * 商品的数量
 	 */
 	private Integer count;
+	private Integer goodId;
+
+	public Integer getGoodId() {
+		return goodId;
+	}
+
+	public void setGoodId(Integer goodId) {
+		this.goodId = goodId;
+	}
 
 	public Integer getId() {
 		return id;

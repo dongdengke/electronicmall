@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
+import cn.edu.bjtu.elctronicmall.bean.Address;
 import cn.edu.bjtu.elctronicmall.bean.User;
 import cn.edu.bjtu.elctronicmall.dao.AddressDao;
 import cn.edu.bjtu.elctronicmall.dao.UserDao;
@@ -82,6 +83,7 @@ public class AddAddressView extends BaseView {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String phone = ed_address_phone.getText().toString().trim();
+				String name = ed_address_name.getText().toString().trim();
 				String zipecode = ed_address_zipecode.getText().toString()
 						.trim();
 				String statusStr = ed_address_status.getText().toString()
@@ -90,6 +92,10 @@ public class AddAddressView extends BaseView {
 						.trim();
 				if (TextUtils.isEmpty(phone)) {
 					Toast.makeText(context, "请输入电话", 0).show();
+					return;
+				}
+				if (TextUtils.isEmpty(name)) {
+					Toast.makeText(context, "请输入收货人姓名", 0).show();
 					return;
 				}
 				if (TextUtils.isEmpty(zipecode)) {
@@ -104,9 +110,14 @@ public class AddAddressView extends BaseView {
 					Toast.makeText(context, "请输入详细地址", 0).show();
 				}
 				int status = Integer.parseInt(statusStr);
-				long rawId = addressDao.addAddress(database,
-						GlobalData.LOGIN_SUCCES, phone, detailInfo, zipecode,
-						status);
+				Address address = new Address();
+				address.setUserId(GlobalData.LOGIN_SUCCES);
+				address.setName(name);
+				address.setPhone(phone);
+				address.setZipecode(zipecode);
+				address.setStatus(status);
+				address.setDetailInfo(detailInfo);
+				long rawId = addressDao.addAddress(database, address);
 				if (rawId != -1) {
 					Toast.makeText(context, "地址添加成功", 0).show();
 					UIManager.getInstance()

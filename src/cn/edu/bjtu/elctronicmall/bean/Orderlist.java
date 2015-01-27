@@ -43,7 +43,7 @@ public class Orderlist {
 	private String sendmethod;
 	/**
 	 * 
-	 * 订单的状态
+	 * 订单的状态 0 未支付 1 支付
 	 */
 	private Integer flag;
 	/**
@@ -51,6 +51,15 @@ public class Orderlist {
 	 * 发票id
 	 */
 	private Integer receiptId;
+	private Integer addressId;
+
+	public Integer getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
+	}
 
 	public Integer getId() {
 		return id;

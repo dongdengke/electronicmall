@@ -22,9 +22,7 @@ import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.bean.Address;
-import cn.edu.bjtu.elctronicmall.bean.User;
 import cn.edu.bjtu.elctronicmall.dao.AddressDao;
-import cn.edu.bjtu.elctronicmall.dao.UserDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
 import cn.edu.bjtu.elctronicmall.manager.UIManager;
@@ -224,14 +222,10 @@ public class AddressView extends BaseView {
 			}
 			// 设置数据
 			Address address = addressInfos.get(position);
-			UserDao userDao = new UserDao();
 			database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 					SQLiteDatabase.OPEN_READWRITE);
-			User user = userDao.findByUserId(database, GlobalData.LOGIN_SUCCES);
-			if (user != null) {
-				holder.tv_item_addresss_name.setText(user.getUsername());
-				holder.tv_item_addresss_phone.setText(user.getPhone());
-			}
+			holder.tv_item_addresss_name.setText(address.getName());
+			holder.tv_item_addresss_phone.setText(address.getPhone());
 			holder.tv_item_addresss_detail.setText(address.getDetailInfo());
 			holder.tv_item_addresss_zipecode.setText(address.getZipecode());
 			return view;

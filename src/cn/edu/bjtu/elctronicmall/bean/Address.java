@@ -39,6 +39,27 @@ public class Address {
 	 * 状态 1 为已支付状态 0 为其他状态
 	 */
 	private Integer status;
+	/**
+	 * 收货人姓名
+	 */
+	private String name;
+	private String phone;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;
