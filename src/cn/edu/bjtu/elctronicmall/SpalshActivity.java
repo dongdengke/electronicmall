@@ -38,6 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.bean.UpdateInfo;
 import cn.edu.bjtu.elctronicmall.engine.UpdateInfoParse;
+import cn.edu.bjtu.elctronicmall.global.GlobalData;
 
 public class SpalshActivity extends Activity {
 
@@ -192,6 +193,7 @@ public class SpalshActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_splash);
+		GlobalData.SP = getSharedPreferences("saveAsDefault", MODE_PRIVATE);
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
 		tv_splash_version.setText("版本号:" + getVersion());

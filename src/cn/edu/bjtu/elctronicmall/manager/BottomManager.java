@@ -177,6 +177,7 @@ public class BottomManager implements Observer {
 				case 2:
 				case GlobalData.GOOGINFOVIEW:
 				case GlobalData.ADDRESSVIEW:
+				case GlobalData.UPDATEADDRESS:
 					hiddenBottom();
 					break;
 

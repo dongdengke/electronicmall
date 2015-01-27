@@ -4,43 +4,46 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical" >
-    
-<ListView 
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/lv_address">
-    
-</ListView>
-<LinearLayout 
-    android:layout_width="fill_parent"
-    android:layout_height="60dp"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:layout_alignParentBottom="true"
-    >
-    <Button 
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_height="40dp"
-        android:background="@drawable/btn_add_cart_nor"
-        android:text="设为默认"/>
-    
-        <Button 
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/btn_add_cart_nor"
-        android:text="修改地址"/>
-                <Button 
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/btn_add_cart_nor"
-        android:text="删除地址"/>
-    
-</LinearLayout>
+    <ListView
+        android:id="@+id/lv_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_save_default"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_add_cart_nor"
+            android:text="设为默认" />
+
+        <Button
+            android:id="@+id/btn_update_address"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_add_cart_nor"
+            android:text="修改地址" />
+
+        <Button
+            android:id="@+id/btn_delete_address"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_add_cart_nor"
+            android:text="删除地址" />
+    </LinearLayout>
+
 </RelativeLayout>

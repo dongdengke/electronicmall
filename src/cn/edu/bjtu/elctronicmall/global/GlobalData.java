@@ -1,5 +1,7 @@
 package cn.edu.bjtu.elctronicmall.global;
 
+import android.content.SharedPreferences;
+
 /**
  * 存放系统的全局常量
  * 
@@ -64,6 +66,10 @@ public class GlobalData {
 	 */
 	public static final int ADD_ADDRESSVIEW = 14;
 	/**
+	 * 修改地址
+	 */
+	public static final int UPDATEADDRESS = 15;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;
@@ -75,4 +81,8 @@ public class GlobalData {
 	 * 用户选择的商品的id
 	 */
 	public static Integer SELECT_GOODID = -1;
+	/**
+	 * 是否保存为默认的标识
+	 */
+	public static SharedPreferences SP;
 }

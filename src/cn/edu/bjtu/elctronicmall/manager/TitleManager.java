@@ -205,6 +205,7 @@ public class TitleManager implements Observer {
 				case GlobalData.HOTPRODUCTVIEW:
 				case GlobalData.MOREVIEW:
 				case GlobalData.ADD_ADDRESSVIEW:
+				case GlobalData.UPDATEADDRESS:
 					showOneText();
 					break;
 				case GlobalData.GOOGINFOVIEW:

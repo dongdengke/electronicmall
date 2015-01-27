@@ -1,8 +1,11 @@
 package cn.edu.bjtu.elctronicmall.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,6 +43,12 @@ public class AddressView extends BaseView {
 	private List<Address> addressInfos;
 	private ListView lv_address;
 	private ViewHolder holder;
+	private Button btn_save_default;
+	private Button btn_update_address;
+	private Button btn_delete_address;
+	// 用于保存用户选择的address
+	private List<Address> selectAddress = new ArrayList<Address>();
+	private AddressAdapter addressAdapter;
 
 	public AddressView(Context context, Bundle bundle) {
 		super(context, bundle);
@@ -70,28 +80,38 @@ public class AddressView extends BaseView {
 						}
 					}
 				});
+		btn_save_default = (Button) showView
+				.findViewById(R.id.btn_save_default);
+		btn_update_address = (Button) showView
+				.findViewById(R.id.btn_update_address);
+		btn_delete_address = (Button) showView
+				.findViewById(R.id.btn_delete_address);
 		lv_address = (ListView) showView.findViewById(R.id.lv_address);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
 		addressDao = new AddressDao();
-		addressInfos = addressDao.queryCartByUserId(database,
+		addressInfos = addressDao.queryAddressByUserId(database,
 				GlobalData.LOGIN_SUCCES);
 		if (addressInfos.size() < 1) {
 			Toast.makeText(context, "您还没有输入地址信息，请输入地址信息", Toast.LENGTH_SHORT)
 					.show();
+			btn_delete_address.setEnabled(false);
+			btn_delete_address.setEnabled(false);
+			btn_update_address.setEnabled(false);
 		} else {
-			// 显示地址列表，共用户选择送货地址
-			AddressAdapter addressAdapter = new AddressAdapter(context);
+			addressAdapter = new AddressAdapter(context);
 			lv_address.setAdapter(addressAdapter);
 			lv_address.setOnItemClickListener(new OnItemClickListener() {
 				int count = 0;
+				private Address address;
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
-					Address address = addressInfos.get(position);
-					System.out.println(address.getZipecode());
+					address = addressInfos.get(position);
+					selectAddress.add(address);
 					if (count % 2 == 0) {
+
 						holder.cb_address_default.setChecked(true);
 					} else {
 						holder.cb_address_default.setChecked(false);
@@ -100,6 +120,52 @@ public class AddressView extends BaseView {
 				}
 			});
 		}
+
+		btn_delete_address.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// 遍历集合，删除选中的地址
+				for (Address address : selectAddress) {
+					if (holder.cb_address_default.isChecked()) {
+						addressDao.deleteAddressById(database, address.getId());
+					}
+					// addressAdapter.notifyDataSetChanged();
+					lv_address.setAdapter(addressAdapter);
+				}
+			}
+		});
+
+		btn_save_default.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				SharedPreferences sp = GlobalData.SP;
+				for (Address address : addressInfos) {
+					if (holder.cb_address_default.isChecked()) {
+						Editor editor = sp.edit();
+						editor.putInt("defaultAddressId", address.getId());
+						editor.commit();
+					}
+
+				}
+			}
+		});
+		btn_update_address.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				for (Address address : addressInfos) {
+
+					if (holder.cb_address_default.isChecked()) {
+						bundle = new Bundle();
+						bundle.putInt("id", address.getId());
+						UIManager.getInstance().changeVew(
+								updateAddressView.class, bundle);
+					}
+				}
+			}
+		});
 		return showView;
 	}
 

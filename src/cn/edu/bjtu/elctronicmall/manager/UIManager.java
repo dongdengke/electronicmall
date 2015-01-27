@@ -212,7 +212,6 @@ public class UIManager extends Observable {
 		// 方案二观察者设计模式
 		setChanged();
 		notifyObservers(currentView.getId());
-
 	}
 
 	/**
