@@ -36,7 +36,7 @@ public class Address {
 	 */
 	private String zipecode;
 	/**
-	 * 状态 1 为选中状态 0 为其他状态
+	 * 状态 1 为已支付状态 0 为其他状态
 	 */
 	private Integer status;
 

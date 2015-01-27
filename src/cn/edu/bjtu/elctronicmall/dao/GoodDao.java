@@ -61,6 +61,7 @@ public class GoodDao {
 			good.setCategoryId(categoryId);
 			goods.add(good);
 		}
+		cursor.close();
 		return goods;
 	}
 
@@ -105,6 +106,7 @@ public class GoodDao {
 			good.setCategoryId(categoryId);
 			goods.add(good);
 		}
+		cursor.close();
 		return goods;
 	}
 
@@ -146,6 +148,7 @@ public class GoodDao {
 			good.setFare(fare);
 			good.setCategoryId(categoryId);
 		}
+		cursor.close();
 		return good;
 	}
 }

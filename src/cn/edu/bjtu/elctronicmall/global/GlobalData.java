@@ -56,6 +56,14 @@ public class GlobalData {
 	 */
 	public static final int LOGINVIEW = 12;
 	/**
+	 * 地址管理界面
+	 */
+	public static final int ADDRESSVIEW = 13;
+	/**
+	 * 添加地址
+	 */
+	public static final int ADD_ADDRESSVIEW = 14;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;

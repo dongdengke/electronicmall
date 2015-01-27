@@ -60,7 +60,38 @@ public class UserDao {
 			user.setPassword(password);
 			return user;
 		}
+		cursor.close();
+		return null;
+	}
 
+	/**
+	 * 根据用户id查询用户信息
+	 * 
+	 * @param database
+	 * @param userId
+	 * @return
+	 */
+	public User findByUserId(SQLiteDatabase database, int userId) {
+		Cursor cursor = database.query("user", new String[] { "username",
+				"password", "email", "phone", "level", "totalscore" }, "id=? ",
+				new String[] { userId + "" }, null, null, null);
+		User user = new User();
+		if (cursor.moveToNext()) {
+			String username = cursor.getString(0);
+			String password = cursor.getString(1);
+			String email = cursor.getString(2);
+			String phone = cursor.getString(3);
+			String level = cursor.getString(4);
+			int totalscore = cursor.getInt(5);
+			user.setEmail(email);
+			user.setPhone(phone);
+			user.setLevel(level);
+			user.setTotalscore(totalscore);
+			user.setUsername(username);
+			user.setPassword(password);
+			return user;
+		}
+		cursor.close();
 		return null;
 	}
 }

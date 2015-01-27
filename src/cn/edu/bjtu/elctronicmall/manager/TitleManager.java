@@ -204,10 +204,12 @@ public class TitleManager implements Observer {
 				case GlobalData.NEWPRODUCTVIEW:
 				case GlobalData.HOTPRODUCTVIEW:
 				case GlobalData.MOREVIEW:
+				case GlobalData.ADD_ADDRESSVIEW:
 					showOneText();
 					break;
 				case GlobalData.GOOGINFOVIEW:
 				case GlobalData.CARTVIEW:
+				case GlobalData.ADDRESSVIEW:
 					showTwoText();
 					break;
 				case GlobalData.MYACCOUNTVIEW:

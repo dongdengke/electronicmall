@@ -176,12 +176,9 @@ public class BottomManager implements Observer {
 					break;
 				case 2:
 				case GlobalData.GOOGINFOVIEW:
+				case GlobalData.ADDRESSVIEW:
 					hiddenBottom();
 					break;
-				// case GlobalData.PANICBUYINGVIEW:
-				// case GlobalData.SALESVIEW:
-				// showOneTitle();
-				// break;
 
 				default:
 					break;
