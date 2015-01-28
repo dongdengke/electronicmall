@@ -78,6 +78,10 @@ public class GlobalData {
 	 */
 	public static final int SELECT_ADDRESSVIEW = 17;
 	/**
+	 * 搜索
+	 */
+	public static final int SEARCHVIEW = 18;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;

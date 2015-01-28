@@ -50,7 +50,6 @@ public class CartView extends BaseView {
 				SQLiteDatabase.OPEN_READWRITE);
 		dao = new GoodDao(context);
 		showView = (ViewGroup) View.inflate(context, R.layout.cart, null);
-		System.out.println(GlobalData.CARTID + "==============");
 		TitleManager.getInstance().showTwoText();
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("产看订单");
@@ -63,10 +62,7 @@ public class CartView extends BaseView {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						// bundle.putInt("addressId", add);
 						// 把购物车id传递到下一个界面
-						// System.out.println(cart.getId() + "-------------");
-						// bundle.putInt("cartId", GlobalData.CARTID);
 						UIManager.getInstance().changeVew(
 								SelectAddressView.class, bundle);
 					}
@@ -82,25 +78,34 @@ public class CartView extends BaseView {
 		adapter = new CartAdapter(goods, context, count);
 		lv_cart = (ListView) showView.findViewById(R.id.lv_cart);
 		lv_cart.setAdapter(adapter);
-		double newprice = good.getNewprice();
-		double totalMoney = count * newprice;
-		TextView tv_count = (TextView) showView.findViewById(R.id.tv_count);
-		TextView tv_totalmoney = (TextView) showView
-				.findViewById(R.id.tv_totalmoney);
-		tv_count.setText(count + "");
-		tv_totalmoney.setText(totalMoney + "");
-		cart = new Cart();
-		cart.setSendScore(0);
-		cart.setTotalMoney(totalMoney);
-		cart.setUserId(GlobalData.LOGIN_SUCCES);
-		cart.setGoodId(goodID);
-		cart.setCount(count);
+		if (goods.size() == 0) {
+			// linerlayout_cart_empty.setVisibility(View.VISIBLE);
+			// linerlayout_cart_not_empty.setVisibility(View.GONE);
+			Toast.makeText(context, "购物车为空，赶紧去逛逛吧!", Toast.LENGTH_SHORT).show();
+		} else {
+			// linerlayout_cart_empty.setVisibility(View.GONE);
+			// linerlayout_cart_not_empty.setVisibility(View.VISIBLE);
+			double newprice = good.getNewprice();
+			double totalMoney = count * newprice;
+			TextView tv_count = (TextView) showView.findViewById(R.id.tv_count);
+			TextView tv_totalmoney = (TextView) showView
+					.findViewById(R.id.tv_totalmoney);
+			tv_count.setText(count + "");
+			tv_totalmoney.setText(totalMoney + "");
+			cart = new Cart();
+			cart.setSendScore(0);
+			cart.setTotalMoney(totalMoney);
+			cart.setUserId(GlobalData.LOGIN_SUCCES);
+			cart.setGoodId(goodID);
+			cart.setCount(count);
+			GoodDao goodDao = new GoodDao(context);
 
-		long addGood = cartDao.addGood(database, cart);
-		GlobalData.CARTID = addGood;
-		// System.out.println(cart.getGoodId());
-		if (addGood != -1) {
-			Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
+			long addGood = cartDao.addGood(database, cart);
+			GlobalData.CARTID = addGood;
+			// System.out.println(cart.getGoodId());
+			if (addGood != -1) {
+				Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
+			}
 		}
 
 	}

@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
@@ -16,6 +18,7 @@ import cn.edu.bjtu.elctronicmall.bean.Good;
 import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 public class PanicBuyingView extends BaseView {
 
@@ -55,6 +58,17 @@ public class PanicBuyingView extends BaseView {
 		panicGoods = dao.findGoodByCategory(database, CATEGORYID_PANICCBUY);
 		PanicBuyingAdapter adapter = new PanicBuyingAdapter(panicGoods, context);
 		lv_panic_buying.setAdapter(adapter);
+		lv_panic_buying.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Good good = panicGoods.get(position);
+				GloableParams.LOOKHISTORY.addFirst(good.getId());
+				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
+			}
+		});
 	}
 
 	@Override

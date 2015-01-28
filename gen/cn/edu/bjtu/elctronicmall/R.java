@@ -1675,7 +1675,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060016;
         public static final int action_menu_presenter=0x7f060017;
         public static final int action_mode_close_button=0x7f060024;
-        public static final int action_settings=0x7f060107;
+        public static final int action_settings=0x7f06010c;
         public static final int activity_chooser_view_content=0x7f060025;
         public static final int always=0x7f06000b;
         public static final int beginning=0x7f060011;
@@ -1685,9 +1685,9 @@ containing a value of this type.
         public static final int btn_collection=0x7f06008b;
         public static final int btn_delete_address=0x7f060055;
         public static final int btn_myebuy_login=0x7f0600af;
-        public static final int btn_name=0x7f0600f3;
-        public static final int btn_name_left=0x7f0600f6;
-        public static final int btn_name_right=0x7f0600f8;
+        public static final int btn_name=0x7f0600f8;
+        public static final int btn_name_left=0x7f0600fb;
+        public static final int btn_name_right=0x7f0600fd;
         public static final int btn_order_goback=0x7f0600d8;
         public static final int btn_order_nopay=0x7f0600b0;
         public static final int btn_order_save=0x7f0600d7;
@@ -1696,8 +1696,8 @@ containing a value of this type.
         public static final int btn_sale_buy=0x7f0600ef;
         public static final int btn_save_default=0x7f060053;
         public static final int btn_update_address=0x7f060054;
-        public static final int btn_update_address_cancel=0x7f060106;
-        public static final int btn_update_addrsses=0x7f060105;
+        public static final int btn_update_address_cancel=0x7f06010b;
+        public static final int btn_update_addrsses=0x7f06010a;
         public static final int btn_wait_for_evaluation=0x7f0600b4;
         public static final int btn_wait_for_receipt=0x7f0600b2;
         public static final int cb_address_default=0x7f06005d;
@@ -1720,12 +1720,12 @@ containing a value of this type.
         public static final int ed_address_userId=0x7f060045;
         public static final int ed_address_zipecode=0x7f06004b;
         public static final int ed_good_count=0x7f060081;
-        public static final int ed_update_address_detailInfo=0x7f060104;
-        public static final int ed_update_address_name=0x7f0600fc;
-        public static final int ed_update_address_phone=0x7f0600fe;
-        public static final int ed_update_address_status=0x7f060102;
-        public static final int ed_update_address_userId=0x7f0600fa;
-        public static final int ed_update_address_zipecode=0x7f060100;
+        public static final int ed_update_address_detailInfo=0x7f060109;
+        public static final int ed_update_address_name=0x7f060101;
+        public static final int ed_update_address_phone=0x7f060103;
+        public static final int ed_update_address_status=0x7f060107;
+        public static final int ed_update_address_userId=0x7f0600ff;
+        public static final int ed_update_address_zipecode=0x7f060105;
         public static final int edit_query=0x7f060030;
         public static final int email=0x7f0600e4;
         public static final int empty_ll=0x7f06006d;
@@ -1738,6 +1738,9 @@ containing a value of this type.
         public static final int gv_hot_product=0x7f06008c;
         public static final int home=0x7f060014;
         public static final int homeAsUp=0x7f060005;
+        public static final int home_btn_search_layout=0x7f0600f1;
+        public static final int home_search_title_logo=0x7f0600f2;
+        public static final int home_title_btn_barcode=0x7f0600f4;
         public static final int hotline_image=0x7f0600a7;
         public static final int hotline_name=0x7f0600a6;
         public static final int hotline_number=0x7f0600a8;
@@ -1755,7 +1758,7 @@ containing a value of this type.
         public static final int iv_enter_into=0x7f060093;
         public static final int iv_home=0x7f060061;
         public static final int iv_hot_product_icon=0x7f06008d;
-        public static final int iv_icon=0x7f0600f1;
+        public static final int iv_icon=0x7f0600f6;
         public static final int iv_more=0x7f060065;
         public static final int iv_myaccount=0x7f060064;
         public static final int iv_myebuy_setting=0x7f0600ac;
@@ -1795,9 +1798,9 @@ containing a value of this type.
         public static final int radio=0x7f06002f;
         public static final int register_scrollview=0x7f0600e2;
         public static final int relativeLayout1=0x7f060040;
-        public static final int relativeLayout_home=0x7f0600f0;
-        public static final int relativeLayout_one=0x7f0600f2;
-        public static final int relativeLayout_two=0x7f0600f5;
+        public static final int relativeLayout_home=0x7f0600f5;
+        public static final int relativeLayout_one=0x7f0600f7;
+        public static final int relativeLayout_two=0x7f0600fa;
         public static final int relativelayout=0x7f06003e;
         public static final int rl_addressmanager=0x7f0600b9;
         public static final int rl_allorder=0x7f0600b6;
@@ -1811,6 +1814,7 @@ containing a value of this type.
         public static final int search_close_btn=0x7f060038;
         public static final int search_edit_frame=0x7f060034;
         public static final int search_go_btn=0x7f06003a;
+        public static final int search_head_view=0x7f0600f0;
         public static final int search_mag_icon=0x7f060035;
         public static final int search_plate=0x7f060036;
         public static final int search_src_text=0x7f060037;
@@ -1826,6 +1830,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f06001e;
         public static final int submit_area=0x7f060039;
         public static final int tabMode=0x7f060002;
+        public static final int text_hint=0x7f0600f3;
         public static final int title=0x7f06002b;
         public static final int top_action_bar=0x7f060020;
         public static final int tv_address_detailInfo=0x7f06004e;
@@ -1862,7 +1867,7 @@ containing a value of this type.
         public static final int tv_item_addresss_phone=0x7f06005a;
         public static final int tv_item_addresss_zipecode=0x7f06005c;
         public static final int tv_myebuy_welcome=0x7f0600ae;
-        public static final int tv_one_name=0x7f0600f4;
+        public static final int tv_one_name=0x7f0600f9;
         public static final int tv_order_detail=0x7f0600c6;
         public static final int tv_order_detail_text=0x7f0600c5;
         public static final int tv_order_good_count=0x7f0600ca;
@@ -1900,13 +1905,13 @@ containing a value of this type.
         public static final int tv_splash_version=0x7f060042;
         public static final int tv_totalmoney=0x7f06006b;
         public static final int tv_totalmoney_name=0x7f06006a;
-        public static final int tv_two_name=0x7f0600f7;
-        public static final int tv_update_address_detailInfo=0x7f060103;
-        public static final int tv_update_address_name=0x7f0600fb;
-        public static final int tv_update_address_phone=0x7f0600fd;
-        public static final int tv_update_address_status=0x7f060101;
-        public static final int tv_update_address_userId=0x7f0600f9;
-        public static final int tv_update_address_zipecode=0x7f0600ff;
+        public static final int tv_two_name=0x7f0600fc;
+        public static final int tv_update_address_detailInfo=0x7f060108;
+        public static final int tv_update_address_name=0x7f060100;
+        public static final int tv_update_address_phone=0x7f060102;
+        public static final int tv_update_address_status=0x7f060106;
+        public static final int tv_update_address_userId=0x7f0600fe;
+        public static final int tv_update_address_zipecode=0x7f060104;
         public static final int tv_xinpin_date=0x7f0600be;
         public static final int tv_xinpin_date_text=0x7f0600bd;
         public static final int tv_xinpin_name=0x7f0600bc;
@@ -2004,10 +2009,11 @@ containing a value of this type.
         public static final int register=0x7f03002e;
         public static final int sale=0x7f03002f;
         public static final int sale_item=0x7f030030;
-        public static final int select_address=0x7f030031;
-        public static final int support_simple_spinner_dropdown_item=0x7f030032;
-        public static final int title_common=0x7f030033;
-        public static final int update_address=0x7f030034;
+        public static final int search=0x7f030031;
+        public static final int select_address=0x7f030032;
+        public static final int support_simple_spinner_dropdown_item=0x7f030033;
+        public static final int title_common=0x7f030034;
+        public static final int update_address=0x7f030035;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;

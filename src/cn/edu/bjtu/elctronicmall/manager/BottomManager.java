@@ -24,6 +24,7 @@ import cn.edu.bjtu.elctronicmall.view.HomeView;
 import cn.edu.bjtu.elctronicmall.view.LoginView;
 import cn.edu.bjtu.elctronicmall.view.MoreView;
 import cn.edu.bjtu.elctronicmall.view.MyAccountView;
+import cn.edu.bjtu.elctronicmall.view.SearchView;
 
 /**
  * 控制底部显示的管理者
@@ -87,7 +88,7 @@ public class BottomManager implements Observer {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				showSearch();
-				UIManager.getInstance().changeVew(HomeView.class, bundle);
+				UIManager.getInstance().changeVew(SearchView.class, bundle);
 			}
 		});
 		iv_cart.setOnClickListener(new OnClickListener() {
@@ -123,9 +124,7 @@ public class BottomManager implements Observer {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				// SecondView secondView = new SecondView(getContext());
 				// 每次点击都会创建secondView实例，改用反射来完成
-				// UIManager.getInstance().changeVew(SecondView.class);
 				showMore();
 				UIManager.getInstance().changeVew(MoreView.class, bundle);
 			}
@@ -169,10 +168,13 @@ public class BottomManager implements Observer {
 					showMyAccount();
 					break;
 				case GlobalData.MOREVIEW:
-					showCart();
+					showMore();
 					break;
 				case GlobalData.CARTVIEW:
 					showCart();
+					break;
+				case GlobalData.SEARCHVIEW:
+					showSearch();
 					break;
 				case 2:
 				case GlobalData.GOOGINFOVIEW:

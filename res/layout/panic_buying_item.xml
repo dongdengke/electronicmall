@@ -87,8 +87,10 @@
         android:textColor="#ff0000"
         android:textSize="16sp" />
     <Button 
+        android:focusable="false"
+        android:clickable="false"
+        
         android:id="@+id/btn_panic_buy"
-        android:onClick="buy"
         android:layout_toRightOf="@id/tv_panic_time"
         android:layout_width="85dp"
         android:layout_height="30dp"

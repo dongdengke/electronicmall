@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
@@ -16,6 +18,7 @@ import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.BottomManager;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 /**
  * 新品上架的界面
@@ -30,6 +33,7 @@ public class NewProductView extends BaseView {
 	private ListView lv_new_product;
 	private static final int NEWPRODUCTINDEX = 3;
 	private NewProductAdapter adapter;
+	private List<Good> newproducts;
 
 	public NewProductView(Context context, Bundle bundle) {
 		super(context, bundle);
@@ -52,10 +56,21 @@ public class NewProductView extends BaseView {
 	 */
 	private void init() {
 		lv_new_product = (ListView) showView.findViewById(R.id.lv_new_product);
-		List<Good> newproducts = dao.findGoodByCategory(database,
+		newproducts = dao.findGoodByCategory(database,
 				NEWPRODUCTINDEX);
 		adapter = new NewProductAdapter(context, newproducts);
 		lv_new_product.setAdapter(adapter);
+		lv_new_product.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Good good = newproducts.get(position);
+				GloableParams.LOOKHISTORY.addFirst(good.getId());
+				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
+			}
+		});
 	}
 
 	@Override

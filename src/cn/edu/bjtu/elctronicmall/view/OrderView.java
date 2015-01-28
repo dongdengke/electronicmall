@@ -2,7 +2,10 @@ package cn.edu.bjtu.elctronicmall.view;
 
 import java.util.Random;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +26,7 @@ import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.dao.OrderListDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 public class OrderView extends BaseView {
 
@@ -49,7 +53,7 @@ public class OrderView extends BaseView {
 	private TextView tv_order_totalmoney;
 	private Orderlist orderlist;
 
-	public OrderView(Context context, Bundle bundle) {
+	public OrderView(final Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.order_info, null);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
@@ -66,14 +70,8 @@ public class OrderView extends BaseView {
 		cart = cartDao.queryCartByCartId(database, cartId);
 		// 购物车中商品的id
 		goodDao = new GoodDao(context);
-		int goodId = cartDao.queryGoodId(database, cartId);
+		final int goodId = cartDao.queryGoodId(database, cartId);
 		good = goodDao.findGoodById(database, goodId);
-
-	}
-
-	@Override
-	public View getView(final Context context) {
-		System.out.println(address.getName());
 		tv_orderno = (TextView) showView.findViewById(R.id.tv_orderno);
 		tv_order_name = (TextView) showView.findViewById(R.id.tv_order_name);
 		tv_order_phone = (TextView) showView.findViewById(R.id.tv_order_phone);
@@ -108,6 +106,11 @@ public class OrderView extends BaseView {
 				.findViewById(R.id.tv_order_good_fare);
 		tv_order_totalmoney = (TextView) showView
 				.findViewById(R.id.tv_order_totalmoney);
+		tv_order_good_totalcount.setText(cart.getCount() + "");
+		tv_order_good_money.setText(cart.getTotalMoney() + "");
+		tv_order_good_fare.setText(good.getFare() + "");
+		double total = cart.getTotalMoney() + good.getFare();
+		tv_order_totalmoney.setText(total + "");
 		Button btn_order_save = (Button) showView
 				.findViewById(R.id.btn_order_save);
 		Button btn_order_goback = (Button) showView
@@ -131,14 +134,41 @@ public class OrderView extends BaseView {
 				OrderListDao orderListDao = new OrderListDao();
 				long rawId = orderListDao.addOrderList(database, orderlist);
 				if (rawId != -1) {
-					Toast.makeText(context, "订单生成成功，去支付吧！", Toast.LENGTH_SHORT)
-							.show();
+					// Toast.makeText(context, "订单生成成功，去支付吧！",
+					// Toast.LENGTH_SHORT)
+					// .show();
+					// PromptManager
+					Builder builder = new AlertDialog.Builder(context);
+					builder.setTitle("付款提醒！");
+					builder.setMessage("订单生产成功，我们会尽快安排发货。取货时要带足够的现金哦！谢谢配合，祝您生活愉快！");
+					builder.setIcon(R.drawable.icon);
+					builder.setPositiveButton("确定",
+							new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									// TODO Auto-generated method stub
+									UIManager.getInstance().changeVew(
+											HomeView.class, bundle);
+								}
+							});
+					builder.setNegativeButton("取消", null);
+					builder.show();
+					// 订单生成成功后，更新商品的库存
+					long rawcount = goodDao.updateRemainCount(database, goodId,
+							cart.getCount());
 				} else {
 					Toast.makeText(context, "订单生成失败，请稍后重试！", Toast.LENGTH_SHORT)
 							.show();
 				}
 			}
 		});
+
+	}
+
+	@Override
+	public View getView(final Context context) {
 
 		return showView;
 	}

@@ -207,6 +207,7 @@ public class TitleManager implements Observer {
 				case GlobalData.ADD_ADDRESSVIEW:
 				case GlobalData.UPDATEADDRESS:
 				case GlobalData.SELECT_ADDRESSVIEW:
+				case GlobalData.SEARCHVIEW:
 					showOneText();
 					break;
 				case GlobalData.GOOGINFOVIEW:
@@ -218,10 +219,6 @@ public class TitleManager implements Observer {
 				case GlobalData.MYACCOUNTVIEW:
 					showNoneTitle();
 					break;
-				// case GlobalData.PANICBUYINGVIEW:
-				// case GlobalData.SALESVIEW:
-				// showOneTitle();
-				// break;
 
 				default:
 					break;

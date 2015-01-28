@@ -3,7 +3,6 @@ package cn.edu.bjtu.elctronicmall;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import cn.edu.bjtu.elctronicmall.manager.BottomManager;
@@ -14,8 +13,6 @@ import cn.edu.bjtu.elctronicmall.view.HomeView;
 
 public class HomeActivity extends Activity {
 	private RelativeLayout middle;
-	private View view1;
-	private View view2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

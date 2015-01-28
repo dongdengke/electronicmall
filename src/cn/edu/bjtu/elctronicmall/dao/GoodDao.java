@@ -3,6 +3,7 @@ package cn.edu.bjtu.elctronicmall.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -150,5 +151,21 @@ public class GoodDao {
 		}
 		cursor.close();
 		return good;
+	}
+
+	/**
+	 * 更新商品的库存
+	 * 
+	 * @param database
+	 * @param good
+	 * @param count
+	 */
+	public long updateRemainCount(SQLiteDatabase database, int goodId, int count) {
+		ContentValues values = new ContentValues();
+		Good good = findGoodById(database, goodId);
+		int remain = good.getInventory() - count;
+		values.put("inventory", remain);
+		return database.update("good", values, "id=?", new String[] { goodId
+				+ "" });
 	}
 }
