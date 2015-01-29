@@ -25,8 +25,10 @@ import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.ViewPagerAdapter;
+import cn.edu.bjtu.elctronicmall.bean.Cart;
 import cn.edu.bjtu.elctronicmall.bean.Collection;
 import cn.edu.bjtu.elctronicmall.bean.Good;
+import cn.edu.bjtu.elctronicmall.dao.CartDao;
 import cn.edu.bjtu.elctronicmall.dao.CollectionDao;
 import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
@@ -83,8 +85,11 @@ public class GoodInfoView extends BaseView {
 	private TextView tv_good_remain;
 	private TextView tv_good_comment;
 	private CollectionDao collectionDao;
+	private int count;
+	private CartDao cartDao;
+	private Cart cart;
 
-	public GoodInfoView(Context context, Bundle bundle) {
+	public GoodInfoView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.good_info, null);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
@@ -93,6 +98,25 @@ public class GoodInfoView extends BaseView {
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("加入购物车");
 		TitleManager.getInstance().setTwoText("商品详情");
+		TitleManager.getInstance().getBtn_name_left()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
+		TitleManager.getInstance().getBtn_name_right()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						addToCart();
+					}
+				});
 		init();
 	}
 
@@ -221,47 +245,16 @@ public class GoodInfoView extends BaseView {
 			iv_score_4.setImageResource(R.drawable.score_on);
 			iv_score_5.setImageResource(R.drawable.score_on);
 		}
+
 		// 处理按钮的点击事件
 		btn_add_cart = (Button) showView.findViewById(R.id.btn_add_cart);
 		btn_collection = (Button) showView.findViewById(R.id.btn_collection);
 		// 添加到购物车
 		btn_add_cart.setOnClickListener(new OnClickListener() {
 
-			private int count;
-
 			@Override
 			public void onClick(View v) {
-				if (GlobalData.LOGIN_SUCCES == -1) {
-					// 进入登陆界面
-					UIManager.getInstance().changeVew(LoginView.class, bundle);
-				} else {
-					// 进行购物车相关的业务逻辑
-					try {
-						ed_good_count = (EditText) showView
-								.findViewById(R.id.ed_good_count);
-						String counStr = ed_good_count.getText().toString()
-								.trim();
-						count = Integer.parseInt(counStr);
-					} catch (NumberFormatException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						System.out.println("异常");
-					}
-					if (count <= 0) {
-						Toast.makeText(context, "请至少选择一件商品", Toast.LENGTH_SHORT)
-								.show();
-						return;
-					}
-					if (count > good.getInventory()) {
-						Toast.makeText(context, "库存不足，请稍后重试",
-								Toast.LENGTH_SHORT).show();
-						return;
-					}
-					GlobalData.SELECT_COUNT = count;
-					GlobalData.SELECT_GOODID = GloableParams.LOOKHISTORY
-							.getFirst();
-					UIManager.getInstance().changeVew(CartView.class, bundle);
-				}
+				addToCart();
 			}
 		});
 		/**
@@ -313,5 +306,49 @@ public class GoodInfoView extends BaseView {
 		Options opts = new Options();
 		opts.inSampleSize = 1;
 		return BitmapFactory.decodeFile(path, opts);
+	}
+
+	public void addToCart() {
+		if (GlobalData.LOGIN_SUCCES == -1) {
+			// 进入登陆界面
+			UIManager.getInstance().changeVew(LoginView.class, bundle);
+		} else {
+			// 进行购物车相关的业务逻辑
+			try {
+				ed_good_count = (EditText) showView
+						.findViewById(R.id.ed_good_count);
+				String counStr = ed_good_count.getText().toString().trim();
+				count = Integer.parseInt(counStr);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			if (count <= 0) {
+				Toast.makeText(context, "请至少选择一件商品", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			if (count > good.getInventory()) {
+				Toast.makeText(context, "库存不足，请稍后重试", Toast.LENGTH_SHORT)
+						.show();
+
+				return;
+			}
+			cartDao = new CartDao();
+			GoodDao goodDao = new GoodDao(context);
+			Good good = goodDao.findGoodById(database,
+					GloableParams.LOOKHISTORY.getFirst());
+			double totalMoney = good.getNewprice() * count;
+			GlobalData.GOODCOUNT = count;
+			cart = new Cart();
+			cart.setSendScore(0);
+			cart.setTotalMoney(totalMoney);
+			cart.setUserId(GlobalData.LOGIN_SUCCES);
+			cart.setGoodId(GloableParams.LOOKHISTORY.getFirst());
+			cart.setCount(count);
+			long rawId = cartDao.addGood(database, cart);
+			if (rawId != -1) {
+				Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
+				UIManager.getInstance().changeVew(CartView.class, bundle);
+			}
+		}
 	}
 }

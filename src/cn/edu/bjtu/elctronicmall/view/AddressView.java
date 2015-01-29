@@ -48,7 +48,7 @@ public class AddressView extends BaseView {
 	private List<Address> selectAddress = new ArrayList<Address>();
 	private AddressAdapter addressAdapter;
 
-	public AddressView(Context context, Bundle bundle) {
+	public AddressView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.address, null);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
@@ -57,6 +57,16 @@ public class AddressView extends BaseView {
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setTwoText("地址管理");
 		TitleManager.getInstance().setRightButtonText("添加地址");
+		TitleManager.getInstance().getBtn_name_left()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 	}
 
 	@Override

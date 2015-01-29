@@ -1,6 +1,9 @@
 package cn.edu.bjtu.elctronicmall.global;
 
+import java.util.LinkedList;
+
 import android.content.SharedPreferences;
+import cn.edu.bjtu.elctronicmall.bean.Good;
 
 /**
  * 存放系统的全局常量
@@ -116,5 +119,17 @@ public class GlobalData {
 	/**
 	 * 购物车id
 	 */
-	public static int CARTID;
+	public static long CARTID;
+	/**
+	 * 用户选择的商品的集合
+	 */
+	public static LinkedList<Good> goods = new LinkedList<Good>();
+	/**
+	 * 用户选择的数量
+	 */
+	public static int GOODCOUNT;
+	/**
+	 * 购物车界面
+	 */
+	public static final int CARTVIEW1 = 101;
 }

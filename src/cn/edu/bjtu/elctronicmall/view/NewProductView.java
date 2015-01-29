@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -35,7 +36,7 @@ public class NewProductView extends BaseView {
 	private NewProductAdapter adapter;
 	private List<Good> newproducts;
 
-	public NewProductView(Context context, Bundle bundle) {
+	public NewProductView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View
 				.inflate(context, R.layout.new_product, null);
@@ -43,6 +44,16 @@ public class NewProductView extends BaseView {
 		TitleManager.getInstance().showOneText();
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("新品上架");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		BottomManager.getInstance().showBottom();
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READONLY);
@@ -56,8 +67,7 @@ public class NewProductView extends BaseView {
 	 */
 	private void init() {
 		lv_new_product = (ListView) showView.findViewById(R.id.lv_new_product);
-		newproducts = dao.findGoodByCategory(database,
-				NEWPRODUCTINDEX);
+		newproducts = dao.findGoodByCategory(database, NEWPRODUCTINDEX);
 		adapter = new NewProductAdapter(context, newproducts);
 		lv_new_product.setAdapter(adapter);
 		lv_new_product.setOnItemClickListener(new OnItemClickListener() {

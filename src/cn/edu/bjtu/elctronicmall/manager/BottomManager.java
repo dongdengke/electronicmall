@@ -1,6 +1,5 @@
 package cn.edu.bjtu.elctronicmall.manager;
 
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -8,16 +7,12 @@ import org.apache.commons.lang3.StringUtils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
-import cn.edu.bjtu.elctronicmall.bean.Cart;
-import cn.edu.bjtu.elctronicmall.dao.CartDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.view.CartView;
 import cn.edu.bjtu.elctronicmall.view.HomeView;
@@ -100,15 +95,15 @@ public class BottomManager implements Observer {
 					UIManager.getInstance().changeVew(LoginView.class, bundle);
 					return;
 				}
-				CartDao cartDao = new CartDao();
-				SQLiteDatabase database = SQLiteDatabase.openDatabase(
-						GloableParams.PATH, null, SQLiteDatabase.OPEN_READONLY);
-				List<Cart> cartInfos = cartDao.queryCartByUserId(database,
-						GlobalData.LOGIN_SUCCES);
-				if (cartInfos.size() >= 0) {
-					showCart();
-					UIManager.getInstance().changeVew(CartView.class, bundle);
-				}
+				// CartDao cartDao = new CartDao();
+				// SQLiteDatabase database = SQLiteDatabase.openDatabase(
+				// GloableParams.PATH, null, SQLiteDatabase.OPEN_READONLY);
+				// List<Cart> cartInfos = cartDao.queryCartByUserId(database,
+				// GlobalData.LOGIN_SUCCES);
+				// if (cartInfos.size() >= 0) {
+				showCart();
+				UIManager.getInstance().changeVew(CartView.class, bundle);
+				// }
 			}
 		});
 		iv_myaccount.setOnClickListener(new OnClickListener() {

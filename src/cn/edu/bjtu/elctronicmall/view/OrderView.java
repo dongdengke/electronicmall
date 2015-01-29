@@ -64,6 +64,16 @@ public class OrderView extends BaseView {
 		TitleManager.getInstance().setTwoText("订单信息");
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("结算");
+		TitleManager.getInstance().getBtn_name_left()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		addressId = bundle.getInt("addressId");
 		cartId = (int) GlobalData.CARTID;
 		address = addressDao.queryAddressByAddressId(database, addressId);

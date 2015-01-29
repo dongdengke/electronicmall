@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import cn.edu.bjtu.elctronicmall.GloableParams;
@@ -16,6 +17,7 @@ import cn.edu.bjtu.elctronicmall.dao.CartDao;
 import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 public class OrderItemView extends BaseView {
 
@@ -48,6 +50,16 @@ public class OrderItemView extends BaseView {
 		TitleManager.getInstance().showOneText();
 		TitleManager.getInstance().setOneText("订单信息");
 		TitleManager.getInstance().setButtonText("返回");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		int addressId = bundle.getInt("orderAddressId");
 		String orderno = bundle.getString("orderno");
 		tv_orderitem_orderno = (TextView) showView

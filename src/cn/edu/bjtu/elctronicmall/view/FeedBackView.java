@@ -16,6 +16,7 @@ import cn.edu.bjtu.elctronicmall.bean.Feedback;
 import cn.edu.bjtu.elctronicmall.dao.FeedBackDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 public class FeedBackView extends BaseView {
 
@@ -24,12 +25,22 @@ public class FeedBackView extends BaseView {
 	private FeedBackDao feedBackDao;
 	private EditText ed_feedback;
 
-	public FeedBackView(final Context context, Bundle bundle) {
+	public FeedBackView(final Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.feedback, null);
 		TitleManager.getInstance().showOneText();
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("用户反馈");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
 		feedBackDao = new FeedBackDao();

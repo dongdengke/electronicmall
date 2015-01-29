@@ -45,12 +45,22 @@ public class RegisterView extends BaseView {
 	private Button btn_register;
 	private UserDao dao;
 
-	public RegisterView(Context context, Bundle bundle) {
+	public RegisterView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.register, null);
 		TitleManager.getInstance().showOneText();
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("注册");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		BottomManager.getInstance().showBottom();
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);

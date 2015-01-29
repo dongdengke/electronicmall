@@ -17,6 +17,7 @@ import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
+import cn.edu.bjtu.elctronicmall.manager.UIManager;
 
 /**
  * 更多功能界面
@@ -34,11 +35,21 @@ public class MoreView extends BaseView {
 	private TextView hotline_number;
 	private String number;
 
-	public MoreView(final Context context, Bundle bundle) {
+	public MoreView(final Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.more, null);
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("更多");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		rl_cache = (RelativeLayout) showView.findViewById(R.id.rl_cache);
 		rl_cache.setOnClickListener(new OnClickListener() {
 

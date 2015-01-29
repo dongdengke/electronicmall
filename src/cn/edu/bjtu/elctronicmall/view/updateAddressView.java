@@ -43,7 +43,7 @@ public class updateAddressView extends BaseView {
 	private int addressId;
 	private Address address;
 
-	public updateAddressView(Context context, Bundle bundle) {
+	public updateAddressView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.update_address,
 				null);
@@ -53,6 +53,16 @@ public class updateAddressView extends BaseView {
 		TitleManager.getInstance().showOneText();
 		TitleManager.getInstance().setOneText("修改地址");
 		TitleManager.getInstance().setLeftButtonText("返回");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		init();
 	}
 

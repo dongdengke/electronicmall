@@ -41,7 +41,7 @@ public class AddAddressView extends BaseView {
 	private Button btn_addrss_save;
 	private Button btn_address_clear;
 
-	public AddAddressView(Context context, Bundle bundle) {
+	public AddAddressView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View
 				.inflate(context, R.layout.add_address, null);
@@ -52,6 +52,16 @@ public class AddAddressView extends BaseView {
 		TitleManager.getInstance().setOneText("添加地址");
 		TitleManager.getInstance().setLeftButtonText("返回");
 		init();
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 	}
 
 	private void init() {

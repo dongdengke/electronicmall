@@ -40,7 +40,7 @@ public class SelectAddressView extends BaseView {
 	// 用于保存用户选择的address
 	private AddressAdapter addressAdapter;
 
-	public SelectAddressView(Context context, Bundle bundle) {
+	public SelectAddressView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.select_address,
 				null);
@@ -49,6 +49,16 @@ public class SelectAddressView extends BaseView {
 		TitleManager.getInstance().showTwoText();
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setOneText("选择地址");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 	}
 
 	@Override

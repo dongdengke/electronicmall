@@ -74,7 +74,6 @@ public class TitleManager implements Observer {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
 			}
 		});
 		btn_name_left.setOnClickListener(new OnClickListener() {

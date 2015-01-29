@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -36,13 +37,23 @@ public class PanicBuyingView extends BaseView {
 	 * 
 	 * @param context
 	 */
-	public PanicBuyingView(Context context, Bundle bundle) {
+	public PanicBuyingView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.panic_buying,
 				null);
 		// 设置标题的信息
 		TitleManager.getInstance().setOneText("限时抢购");
 		TitleManager.getInstance().setButtonText("返回");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READONLY);
 		dao = new GoodDao(context);

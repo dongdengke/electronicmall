@@ -68,6 +68,16 @@ public class SearchView extends BaseView {
 		TitleManager.getInstance().showOneText();
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("商品搜索");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
 		goodDao = new GoodDao(context);
@@ -78,6 +88,22 @@ public class SearchView extends BaseView {
 		btn_search = (ImageView) showView.findViewById(R.id.btn_search);
 		ll_empty = (LinearLayout) showView.findViewById(R.id.ll_empty);
 		fr_not_empty = (FrameLayout) showView.findViewById(R.id.fr_not_empty);
+
+		lv_search_good.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Good good = goods.get(position);
+				GloableParams.LOOKHISTORY.addFirst(good.getId());
+				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
+			}
+		});
+	}
+
+	@Override
+	public View getView(final Context context) {
 		btn_search.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -98,24 +124,8 @@ public class SearchView extends BaseView {
 						handler.sendEmptyMessage(0);
 					}
 				}).start();
-
 			}
 		});
-		lv_search_good.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				Good good = goods.get(position);
-				GloableParams.LOOKHISTORY.addFirst(good.getId());
-				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
-			}
-		});
-	}
-
-	@Override
-	public View getView(Context context) {
 		return showView;
 	}
 

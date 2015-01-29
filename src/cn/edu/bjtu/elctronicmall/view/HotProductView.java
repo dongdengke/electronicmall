@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -34,7 +35,7 @@ public class HotProductView extends BaseView {
 	private List<Good> goods;
 	private HotProductAdapter adapter;
 
-	public HotProductView(Context context, Bundle bundle) {
+	public HotProductView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View
 				.inflate(context, R.layout.hot_product, null);
@@ -42,6 +43,16 @@ public class HotProductView extends BaseView {
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("商品列表");
 		BottomManager.getInstance().showBottom();
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READONLY);
 		dao = new GoodDao(context);

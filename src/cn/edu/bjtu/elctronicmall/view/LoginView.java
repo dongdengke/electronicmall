@@ -32,7 +32,7 @@ public class LoginView extends BaseView {
 	private SQLiteDatabase database;
 	private UserDao dao;
 
-	public LoginView(Context context, Bundle bundle) {
+	public LoginView(Context context, final Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.login, null);
 		user_regist = (Button) showView.findViewById(R.id.user_regist);
@@ -44,6 +44,16 @@ public class LoginView extends BaseView {
 
 		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("注册");
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
 		BottomManager.getInstance().showBottom();
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READONLY);
