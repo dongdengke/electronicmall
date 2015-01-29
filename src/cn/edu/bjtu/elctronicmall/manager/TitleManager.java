@@ -208,12 +208,14 @@ public class TitleManager implements Observer {
 				case GlobalData.UPDATEADDRESS:
 				case GlobalData.SELECT_ADDRESSVIEW:
 				case GlobalData.SEARCHVIEW:
+				case GlobalData.FEEDBACK:
 					showOneText();
 					break;
 				case GlobalData.GOOGINFOVIEW:
 				case GlobalData.CARTVIEW:
 				case GlobalData.ADDRESSVIEW:
 				case GlobalData.ORDERVIEW:
+				case GlobalData.COLLECTIONVIEW:
 					showTwoText();
 					break;
 				case GlobalData.MYACCOUNTVIEW:

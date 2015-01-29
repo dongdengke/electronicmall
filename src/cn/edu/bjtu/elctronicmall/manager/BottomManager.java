@@ -165,6 +165,7 @@ public class BottomManager implements Observer {
 					break;
 
 				case GlobalData.MYACCOUNTVIEW:
+				case GlobalData.FEEDBACK:
 					showMyAccount();
 					break;
 				case GlobalData.MOREVIEW:
@@ -182,6 +183,7 @@ public class BottomManager implements Observer {
 				case GlobalData.UPDATEADDRESS:
 				case GlobalData.ORDERVIEW:
 				case GlobalData.SELECT_ADDRESSVIEW:
+				case GlobalData.COLLECTIONVIEW:
 					hiddenBottom();
 					break;
 

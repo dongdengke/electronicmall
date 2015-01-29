@@ -3,16 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-<RelativeLayout
-        android:id="@+id/search_head_view"
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/pub_margin_or_padding_space_fifty_five"
         android:background="@color/pub_color_eleven"
+        android:gravity="center"
         android:orientation="horizontal" >
 
         <RelativeLayout
-            android:id="@+id/home_btn_search_layout"
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
             android:layout_alignParentLeft="true"
@@ -22,7 +21,6 @@
             android:background="@drawable/mysearch" >
 
             <ImageView
-                android:id="@+id/home_search_title_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -30,30 +28,90 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/home_search_title_logo" />
 
-            <TextView
+            <EditText
                 android:id="@+id/text_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8.0dip"
-                android:layout_toRightOf="@id/home_search_title_logo"
+                android:background="@null"
                 android:hint="搜索商品"
                 android:singleLine="true"
-                android:text=""
                 android:textColor="#ffdddddd"
                 android:textColorHint="#ffdddddd"
                 android:textSize="16.0sp" />
 
+            <!-- <Button -->
+            <!-- android:id="@+id/btn_search" -->
+            <!-- android:layout_width="80dip" -->
+            <!-- android:layout_height="40.0dip" -->
+            <!-- android:layout_alignParentRight="true" -->
+            <!-- android:layout_centerVertical="true" -->
+            <!-- android:scaleType="centerInside" -->
+            <!-- android:text="搜索" /> -->
+
             <ImageView
-                android:id="@+id/home_title_btn_barcode"
+                android:id="@+id/btn_search"
                 android:layout_width="40.0dip"
                 android:layout_height="40.0dip"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:scaleType="centerInside"
                 android:src="@drawable/barcode_icon" />
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fr_not_empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="100" >
+
+        <LinearLayout
+            android:id="@+id/ll_task_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正在获取商品信息" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_search_good"
+            android:layout_width="fill_parent"
+            android:fadingEdge="none"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+        </ListView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@color/pub_color_eleven"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="没有相应的商品"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </LinearLayout>

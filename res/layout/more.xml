@@ -25,6 +25,8 @@
                 android:layout_marginTop="20.0dip" >
 
                 <RelativeLayout
+                    
+                    android:id="@+id/rl_cache"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:background="@drawable/btn_white_def_bg"
@@ -61,6 +63,7 @@
                 android:layout_marginTop="10.0dip" >
 
                 <RelativeLayout
+                    android:id="@+id/rl_version"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:background="@drawable/btn_white_def_bg" >
@@ -111,6 +114,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_share"
                 android:layout_width="fill_parent"
                 android:layout_height="50.0dip"
                 android:layout_marginLeft="10.0dip"
@@ -148,6 +152,7 @@
                 android:layout_marginTop="10.0dip" >
 
                 <RelativeLayout
+                    android:id="@+id/rl_contact"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:background="@drawable/btn_white_def_bg" >

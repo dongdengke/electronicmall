@@ -25,7 +25,9 @@ import android.widget.Toast;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.ViewPagerAdapter;
+import cn.edu.bjtu.elctronicmall.bean.Collection;
 import cn.edu.bjtu.elctronicmall.bean.Good;
+import cn.edu.bjtu.elctronicmall.dao.CollectionDao;
 import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
@@ -80,12 +82,13 @@ public class GoodInfoView extends BaseView {
 	private TextView tv_good_location;
 	private TextView tv_good_remain;
 	private TextView tv_good_comment;
+	private CollectionDao collectionDao;
 
 	public GoodInfoView(Context context, Bundle bundle) {
 		super(context, bundle);
 		showView = (ViewGroup) View.inflate(context, R.layout.good_info, null);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
-				SQLiteDatabase.OPEN_READONLY);
+				SQLiteDatabase.OPEN_READWRITE);
 		dao = new GoodDao(context);
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("加入购物车");
@@ -221,6 +224,7 @@ public class GoodInfoView extends BaseView {
 		// 处理按钮的点击事件
 		btn_add_cart = (Button) showView.findViewById(R.id.btn_add_cart);
 		btn_collection = (Button) showView.findViewById(R.id.btn_collection);
+		// 添加到购物车
 		btn_add_cart.setOnClickListener(new OnClickListener() {
 
 			private int count;
@@ -260,11 +264,29 @@ public class GoodInfoView extends BaseView {
 				}
 			}
 		});
+		/**
+		 * 添加用户收藏
+		 */
 		btn_collection.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-
+				if (GlobalData.LOGIN_SUCCES == -1) {
+					// 进入登陆界面
+					UIManager.getInstance().changeVew(LoginView.class, bundle);
+				} else {
+					collectionDao = new CollectionDao();
+					Collection collection = new Collection();
+					collection.setGoodId(GloableParams.LOOKHISTORY.getFirst());
+					collection.setUserId(GlobalData.LOGIN_SUCCES);
+					long rawId = collectionDao.addCollection(database,
+							collection);
+					if (rawId == -1) {
+						Toast.makeText(context, "收藏失败", 0).show();
+					} else {
+						Toast.makeText(context, "收藏成功", 0).show();
+					}
+				}
 			}
 		});
 

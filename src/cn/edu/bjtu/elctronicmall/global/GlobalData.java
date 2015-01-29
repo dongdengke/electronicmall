@@ -82,6 +82,14 @@ public class GlobalData {
 	 */
 	public static final int SEARCHVIEW = 18;
 	/**
+	 * 用户反馈
+	 */
+	public static final int FEEDBACK = 19;
+	/**
+	 * 用户收藏
+	 */
+	public static final int COLLECTIONVIEW = 20;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;
