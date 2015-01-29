@@ -64,7 +64,6 @@ public class SelectAddressView extends BaseView {
 							UIManager.getInstance().changeVew(LoginView.class,
 									bundle);
 						} else {
-
 							UIManager.getInstance().changeVew(
 									AddAddressView.class, bundle);
 						}

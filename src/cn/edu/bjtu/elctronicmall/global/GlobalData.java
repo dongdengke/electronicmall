@@ -90,6 +90,14 @@ public class GlobalData {
 	 */
 	public static final int COLLECTIONVIEW = 20;
 	/**
+	 * 我的所有订单
+	 */
+	public static final int MYALLORDERVIEW = 21;
+	/**
+	 * 订单条目
+	 */
+	public static final int ORDERITEMVIEW = 22;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;

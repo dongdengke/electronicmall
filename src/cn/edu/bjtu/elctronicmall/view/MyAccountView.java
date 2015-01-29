@@ -40,8 +40,6 @@ public class MyAccountView extends BaseView {
 
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
-		rl_collection_empty = (LinearLayout) showView
-				.findViewById(R.id.rl_collection_empty);
 		rl_collection_not_empty = (RelativeLayout) showView
 				.findViewById(R.id.rl_collection_not_empty);
 		tv_username = (TextView) showView.findViewById(R.id.tv_username);
@@ -66,6 +64,34 @@ public class MyAccountView extends BaseView {
 
 			}
 		});
+		// 代支付
+		TextView tv_pay = (TextView) showView.findViewById(R.id.tv_pay);
+		tv_pay.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(context, "目前此网站紧支持货到付款", Toast.LENGTH_LONG)
+						.show();
+			}
+		});
+		// 我的订单
+		TextView my_allorder = (TextView) showView
+				.findViewById(R.id.my_allorder);
+		my_allorder.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (GlobalData.LOGIN_SUCCES == -1) {
+					UIManager.getInstance().changeVew(LoginView.class, bundle);
+				} else {
+					UIManager.getInstance().changeVew(MyAllOrderView.class,
+							bundle);
+				}
+			}
+		});
+
 		// 用户收藏
 		RelativeLayout rl_collection = (RelativeLayout) showView
 				.findViewById(R.id.rl_collection);

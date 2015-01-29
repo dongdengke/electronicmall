@@ -94,6 +94,9 @@
                         android:layout_weight="1.0" >
 
                         <TextView
+                            android:id="@+id/tv_pay"
+                            android:focusable="true"
+                            android:clickable="true"
                             style="@style/myebuy_item_font"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -208,10 +211,13 @@
                         android:layout_weight="1.0" >
 
                         <TextView
+                            android:id="@+id/my_allorder"
                             style="@style/myebuy_item_font"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
+                            android:focusable="true"
+                            android:clickable="true"
                             android:text="@string/allorders"
                             android:textColor="@color/pub_color_eight"
                             android:textSize="@dimen/android_public_textsize_20pt" />

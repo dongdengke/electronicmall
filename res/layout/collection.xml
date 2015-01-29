@@ -43,35 +43,35 @@
             </ListView>
         </RelativeLayout>
 
-        <RelativeLayout
+<!--         <RelativeLayout -->
       
-            android:layout_width="fill_parent"
-             android:visibility="invisible" 
-            android:layout_height="fill_parent" >
+<!--             android:layout_width="fill_parent" -->
+<!--              android:visibility="invisible"  -->
+<!--             android:layout_height="fill_parent" > -->
 
-            <LinearLayout
-                      android:id="@+id/rl_collection_empty"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:orientation="vertical" >
+<!--             <LinearLayout -->
+<!--                       android:id="@+id/rl_collection_empty" -->
+<!--                 android:layout_width="fill_parent" -->
+<!--                 android:layout_height="fill_parent" -->
+<!--                 android:gravity="center" -->
+<!--                 android:orientation="vertical" > -->
 
-                <ImageView
-                    android:id="@+id/iv_no_collection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/no_collection" />
+<!--                 <ImageView -->
+<!--                     android:id="@+id/iv_no_collection" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:background="@drawable/no_collection" /> -->
 
-                <TextView
-                    android:id="@+id/tv_collention_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/iv_no_collection"
-                    android:layout_marginTop="15dp"
-                    android:text="还没有任何收藏信息，赶快去看看吧！"
-                    android:textColor="#88000000" />
-            </LinearLayout>
-        </RelativeLayout>
+<!--                 <TextView -->
+<!--                     android:id="@+id/tv_collention_info1" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:layout_below="@id/iv_no_collection" -->
+<!--                     android:layout_marginTop="15dp" -->
+<!--                     android:text="还没有任何收藏信息，赶快去看看吧！" -->
+<!--                     android:textColor="#88000000" /> -->
+<!--             </LinearLayout> -->
+<!--         </RelativeLayout> -->
     </FrameLayout>
 
 </LinearLayout>

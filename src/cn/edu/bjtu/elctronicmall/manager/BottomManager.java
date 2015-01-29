@@ -184,6 +184,8 @@ public class BottomManager implements Observer {
 				case GlobalData.ORDERVIEW:
 				case GlobalData.SELECT_ADDRESSVIEW:
 				case GlobalData.COLLECTIONVIEW:
+				case GlobalData.MYALLORDERVIEW:
+				case GlobalData.ORDERITEMVIEW:
 					hiddenBottom();
 					break;
 
