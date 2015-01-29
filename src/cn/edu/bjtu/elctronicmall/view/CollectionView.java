@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.adapter.CollectionAdapter;
@@ -33,6 +34,8 @@ public class CollectionView extends BaseView {
 	private List<Good> goods;
 	private Good good;
 	private CollectionAdapter saleAdapter;
+	private RelativeLayout rl_collection_empty;
+	private RelativeLayout rl_collection_not_empty;
 
 	public CollectionView(Context context, final Bundle bundle) {
 		super(context, bundle);
@@ -41,6 +44,10 @@ public class CollectionView extends BaseView {
 		TitleManager.getInstance().setTwoText("收藏夹");
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("去逛逛");
+		rl_collection_empty = (RelativeLayout) showView
+				.findViewById(R.id.rl_collection_empty);
+		rl_collection_not_empty = (RelativeLayout) showView
+				.findViewById(R.id.rl_collection_not_empty);
 		TitleManager.getInstance().getBtn_name_left()
 				.setOnClickListener(new OnClickListener() {
 
@@ -65,35 +72,44 @@ public class CollectionView extends BaseView {
 				SQLiteDatabase.OPEN_READWRITE);
 		collectionDao = new CollectionDao();
 		lv_collection = (ListView) showView.findViewById(R.id.lv_collection);
-		collections = collectionDao.queryByUserId(database,
-				GlobalData.LOGIN_SUCCES);
 		goodDao = new GoodDao(context);
 		goods = new ArrayList<Good>();
-		for (Collection collection : collections) {
-			int goodId = collection.getGoodId();
-			good = goodDao.findGoodById(database, goodId);
-			goods.add(good);
-		}
-		saleAdapter = new CollectionAdapter(goods, context);
-		lv_collection.setAdapter(saleAdapter);
-		lv_collection.setOnItemClickListener(new OnItemClickListener() {
+		collections = collectionDao.queryByUserId(database,
+				GlobalData.LOGIN_SUCCES);
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				Collection collection = collections.get(position);
-				int goodId = collection.getGoodId();
-				GloableParams.LOOKHISTORY.addFirst(goodId);
-				System.out.println(goodId + "------------");
-				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
-			}
-		});
 	}
 
 	@Override
 	public View getView(Context context) {
 		// TODO Auto-generated method stub
+		if (collections.size() == 0) {
+			rl_collection_empty.setVisibility(View.VISIBLE);
+			rl_collection_not_empty.setVisibility(View.GONE);
+		} else {
+			rl_collection_empty.setVisibility(View.INVISIBLE);
+			rl_collection_not_empty.setVisibility(View.VISIBLE);
+			for (Collection collection : collections) {
+				int goodId = collection.getGoodId();
+				good = goodDao.findGoodById(database, goodId);
+				goods.add(good);
+			}
+			saleAdapter = new CollectionAdapter(goods, context);
+			lv_collection.setAdapter(saleAdapter);
+			lv_collection.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					// TODO Auto-generated method stub
+					Collection collection = collections.get(position);
+					int goodId = collection.getGoodId();
+					GloableParams.LOOKHISTORY.addFirst(goodId);
+					UIManager.getInstance().changeVew(GoodInfoView.class,
+							bundle);
+				}
+			});
+		}
+
 		return showView;
 	}
 

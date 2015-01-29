@@ -64,6 +64,28 @@ public class MyAccountView extends BaseView {
 						.show();
 			}
 		});
+		// 待收货
+		RelativeLayout btn_wait_for_receipt = (RelativeLayout) showView
+				.findViewById(R.id.btn_wait_for_receipt);
+		btn_wait_for_receipt.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(context, "请关注物流信息，我们会随时为您提供最新物流信息", 0).show();
+			}
+		});
+		// 待评价
+		RelativeLayout btn_wait_for_evaluation = (RelativeLayout) showView
+				.findViewById(R.id.btn_wait_for_evaluation);
+		btn_wait_for_evaluation.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(context, "请收到货后给予我们评价哦", 0).show();
+			}
+		});
 		// 我的订单
 		TextView my_allorder = (TextView) showView
 				.findViewById(R.id.my_allorder);
@@ -92,17 +114,6 @@ public class MyAccountView extends BaseView {
 				if (GlobalData.LOGIN_SUCCES == -1) {
 					UIManager.getInstance().changeVew(LoginView.class, bundle);
 				} else {
-					collectionDao = new CollectionDao();
-					collections = collectionDao.queryByUserId(database,
-							GlobalData.LOGIN_SUCCES);
-					if (collections.size() <= 0) {
-						// rl_collection_empty.setVisibility(View.VISIBLE);
-						// rl_collection_not_empty.setVisibility(View.INVISIBLE);
-						Toast.makeText(context, "收藏夹为空", 0).show();
-					} else {
-						// rl_collection_empty.setVisibility(View.INVISIBLE);
-						// rl_collection_not_empty.setVisibility(View.VISIBLE);
-					}
 					UIManager.getInstance().changeVew(CollectionView.class,
 							bundle);
 				}

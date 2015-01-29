@@ -61,9 +61,8 @@ public class OrderView extends BaseView {
 				SQLiteDatabase.OPEN_READWRITE);
 		addressDao = new AddressDao();
 		TitleManager.getInstance().showTwoText();
-		TitleManager.getInstance().setTwoText("订单信息");
-		TitleManager.getInstance().setLeftButtonText("返回");
-		TitleManager.getInstance().setRightButtonText("结算");
+		TitleManager.getInstance().setOneText("订单信息");
+		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().getBtn_name_left()
 				.setOnClickListener(new OnClickListener() {
 
@@ -75,7 +74,6 @@ public class OrderView extends BaseView {
 				});
 		addressId = bundle.getInt("addressId");
 		cartId = (int) GlobalData.CARTID;
-		System.out.println("cartId+---------" + cartId);
 		address = addressDao.queryAddressByAddressId(database, addressId);
 		cartDao = new CartDao();
 		cart = cartDao.queryCartByCartId(database, cartId);

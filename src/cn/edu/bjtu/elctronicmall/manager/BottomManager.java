@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
-import cn.edu.bjtu.elctronicmall.view.CartView;
 import cn.edu.bjtu.elctronicmall.view.HomeView;
 import cn.edu.bjtu.elctronicmall.view.LoginView;
 import cn.edu.bjtu.elctronicmall.view.MoreView;
@@ -95,15 +94,8 @@ public class BottomManager implements Observer {
 					UIManager.getInstance().changeVew(LoginView.class, bundle);
 					return;
 				}
-				// CartDao cartDao = new CartDao();
-				// SQLiteDatabase database = SQLiteDatabase.openDatabase(
-				// GloableParams.PATH, null, SQLiteDatabase.OPEN_READONLY);
-				// List<Cart> cartInfos = cartDao.queryCartByUserId(database,
-				// GlobalData.LOGIN_SUCCES);
-				// if (cartInfos.size() >= 0) {
-				showCart();
-				UIManager.getInstance().changeVew(CartView.class, bundle);
-				// }
+				// showCart();
+				// UIManager.getInstance().changeVew(CartView.class, bundle);
 			}
 		});
 		iv_myaccount.setOnClickListener(new OnClickListener() {

@@ -116,4 +116,15 @@ public class CartDao {
 		cursor.close();
 		return goodId;
 	}
+
+	/**
+	 * 根据id删除一条购物车信息
+	 * 
+	 * @param database
+	 * @param cardId
+	 * @return
+	 */
+	public long deleteCartById(SQLiteDatabase database, int cardId) {
+		return database.delete("cart", "id=?", new String[] { cardId + "" });
+	}
 }

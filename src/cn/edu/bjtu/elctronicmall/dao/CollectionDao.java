@@ -29,6 +29,14 @@ public class CollectionDao {
 		return database.insert("collection", null, values);
 	}
 
+	/**
+	 * 
+	 * 根据用户id查询收藏
+	 * 
+	 * @param database
+	 * @param userId
+	 * @return
+	 */
 	public List<Collection> queryByUserId(SQLiteDatabase database, int userId) {
 		Cursor cursor = database.query("collection", new String[] { "id",
 				"goodId" }, "userId=?", new String[] { userId + "" }, null,
@@ -46,5 +54,29 @@ public class CollectionDao {
 		}
 		cursor.close();
 		return collections;
+	}
+
+	/**
+	 * 根据商品id查询收藏
+	 * 
+	 * @param database
+	 * @param goodId
+	 * @return
+	 */
+	public Collection queryByGoodId(SQLiteDatabase database, int goodId) {
+		Cursor cursor = database.query("collection", new String[] { "id",
+				"userId" }, "goodId=?", new String[] { goodId + "" }, null,
+				null, null);
+		Collection collection = null;
+		while (cursor.moveToNext()) {
+			collection = new Collection();
+			int id = cursor.getInt(0);
+			int userId = cursor.getInt(1);
+			collection.setId(id);
+			collection.setGoodId(goodId);
+			collection.setUserId(userId);
+		}
+		cursor.close();
+		return collection;
 	}
 }
