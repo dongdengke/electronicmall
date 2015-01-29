@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    <RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+<EditText 
+    android:layout_margin="5dp"
+    android:id="@+id/ed_feedback"
+    android:layout_width="fill_parent"
+    android:layout_height="120dp"
+    android:gravity="left"
+    android:background="@null"
+    android:hint="请输入你的反馈信息"
+    android:maxLines="10"/>
+<Button 
+    android:layout_below="@id/ed_feedback"
+    android:id="@+id/btn_submit_feedback"
+    android:layout_width="fill_parent"
+    android:layout_height="35dp"
+    android:text="提交反馈"
+    android:layout_margin="5dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/btn_add_cart_nor"/>
+</RelativeLayout>
+</LinearLayout>
