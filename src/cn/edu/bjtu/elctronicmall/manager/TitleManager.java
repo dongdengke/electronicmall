@@ -217,6 +217,7 @@ public class TitleManager implements Observer {
 				case GlobalData.ORDERVIEW:
 				case GlobalData.COLLECTIONVIEW:
 				case GlobalData.MYALLORDERVIEW:
+				case GlobalData.HISTORYVIEW:
 					showTwoText();
 					break;
 				case GlobalData.MYACCOUNTVIEW:

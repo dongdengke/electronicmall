@@ -43,18 +43,7 @@ public class MyAccountView extends BaseView {
 		rl_collection_not_empty = (RelativeLayout) showView
 				.findViewById(R.id.rl_collection_not_empty);
 		tv_username = (TextView) showView.findViewById(R.id.tv_username);
-		if (GlobalData.LOGIN_SUCCES == -1) {
-			btn_myebuy_login.setVisibility(View.VISIBLE);
-			tv_username.setVisibility(View.GONE);
-		} else {
-			btn_myebuy_login.setVisibility(View.GONE);
-			btn_myebuy_login.setEnabled(false);
-			tv_username.setVisibility(View.VISIBLE);
-			UserDao userDao = new UserDao();
-			User user = userDao.findByUserId(database, GlobalData.LOGIN_SUCCES);
-			System.out.println(user.getUsername());
-			tv_username.setText(user.getUsername());
-		}
+
 		btn_myebuy_login.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -119,6 +108,22 @@ public class MyAccountView extends BaseView {
 				}
 			}
 		});
+		// 浏览历史
+		RelativeLayout rl_history = (RelativeLayout) showView
+				.findViewById(R.id.rl_history);
+		rl_history.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (GlobalData.LOGIN_SUCCES == -1) {
+					UIManager.getInstance().changeVew(LoginView.class, bundle);
+				} else {
+					UIManager.getInstance()
+							.changeVew(HistoryView.class, bundle);
+				}
+			}
+		});
 		// 地址管理
 		RelativeLayout rl_addressmanager = (RelativeLayout) showView
 				.findViewById(R.id.rl_addressmanager);
@@ -157,6 +162,17 @@ public class MyAccountView extends BaseView {
 	@Override
 	public View getView(Context context) {
 		// TODO Auto-generated method stub
+		if (GlobalData.LOGIN_SUCCES == -1) {
+			btn_myebuy_login.setVisibility(View.VISIBLE);
+			tv_username.setVisibility(View.GONE);
+		} else {
+			btn_myebuy_login.setVisibility(View.GONE);
+			tv_username.setVisibility(View.VISIBLE);
+			UserDao userDao = new UserDao();
+			User user = userDao.findByUserId(database, GlobalData.LOGIN_SUCCES);
+			System.out.println(user.getUsername());
+			tv_username.setText(user.getUsername());
+		}
 		return showView;
 	}
 

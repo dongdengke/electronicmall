@@ -101,6 +101,10 @@ public class GlobalData {
 	 */
 	public static final int ORDERITEMVIEW = 22;
 	/**
+	 * 用户浏览历史
+	 */
+	public static final int HISTORYVIEW = 23;
+	/**
 	 * 登陆成功的标识
 	 */
 	public static Integer LOGIN_SUCCES = -1;
@@ -132,4 +136,5 @@ public class GlobalData {
 	 * 购物车界面
 	 */
 	public static final int CARTVIEW1 = 101;
+
 }

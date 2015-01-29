@@ -64,6 +64,12 @@ public class PanicBuyingView extends BaseView {
 	 * 初始化操作
 	 */
 	private void initView() {
+
+	}
+
+	@Override
+	public View getView(Context context) {
+		// TODO Auto-generated method stub
 		lv_panic_buying = (ListView) showView
 				.findViewById(R.id.lv_panic_buying);
 		panicGoods = dao.findGoodByCategory(database, CATEGORYID_PANICCBUY);
@@ -80,11 +86,6 @@ public class PanicBuyingView extends BaseView {
 				UIManager.getInstance().changeVew(GoodInfoView.class, bundle);
 			}
 		});
-	}
-
-	@Override
-	public View getView(Context context) {
-		// TODO Auto-generated method stub
 		return showView;
 	}
 

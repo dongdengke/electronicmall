@@ -95,6 +95,7 @@ public class GoodInfoView extends BaseView {
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
 		dao = new GoodDao(context);
+
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("加入购物车");
 		TitleManager.getInstance().setTwoText("商品详情");
@@ -117,12 +118,13 @@ public class GoodInfoView extends BaseView {
 						addToCart();
 					}
 				});
-		init();
 	}
 
-	private void init() {
-		int id = GloableParams.LOOKHISTORY.getFirst();
-		good = dao.findGoodById(database, id);
+	@Override
+	public View getView(final Context context) {
+		// int goodId = bundle.getInt("goodId");
+		int goodId = GloableParams.LOOKHISTORY.getFirst();
+		good = dao.findGoodById(database, goodId);
 		icons = new ArrayList<ImageView>();
 		String pic = good.getPic();
 		// bm.setPixel(200, 150, 0);
@@ -245,7 +247,6 @@ public class GoodInfoView extends BaseView {
 			iv_score_4.setImageResource(R.drawable.score_on);
 			iv_score_5.setImageResource(R.drawable.score_on);
 		}
-
 		// 处理按钮的点击事件
 		btn_add_cart = (Button) showView.findViewById(R.id.btn_add_cart);
 		btn_collection = (Button) showView.findViewById(R.id.btn_collection);
@@ -283,11 +284,6 @@ public class GoodInfoView extends BaseView {
 			}
 		});
 
-	}
-
-	@Override
-	public View getView(Context context) {
-		// TODO Auto-generated method stub
 		return showView;
 	}
 
