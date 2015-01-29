@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/category_listview_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="订单收货信息"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="订单号："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_orderno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="10010101030040"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="收货人信息："
+                android:textColor="#88000000"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="姓名："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_name_text"
+                    android:text="dong"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_phone_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="电话："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_phone_text"
+                    android:text="18813073696"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_detail_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="详细地址："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_detail_text"
+                    android:text="河南驻马店"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/category_listview_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="商品清单"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="商品名称："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_name_text"
+                    android:text="豆奶粉"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_count_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="数量："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_count_text"
+                    android:text="1"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_newprice_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="单价："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_newprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_newprice_text"
+                    android:text="23.0"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_totalmoney_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="总价："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_totalmoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_totalmoney_text"
+                    android:text="23.0"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/category_listview_divider" />
+               <RelativeLayout
+                   android:layout_marginTop="10dp"
+                android:layout_width="fill_parent"
+                android:background="#ffdddddd"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    
+                    android:id="@+id/tv_orderitem_order_good_totalcount_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="数量总计："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_totalcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_totalcount_text"
+                    android:text="1"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+            
+                  <RelativeLayout
+                             android:background="#ffdddddd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_money_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="商品金额："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_money_text"
+                    android:text="20.0"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+            
+                   
+                  <RelativeLayout
+                             android:background="#ffdddddd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_fare_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="运费："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_good_fare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_good_fare_text"
+                    android:text="5.0"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+                         
+                  <RelativeLayout
+                             android:background="#ffdddddd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_totalmoney_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="总计："
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_orderitem_order_totalmoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_orderitem_order_totalmoney_text"
+                    android:text="25.0"
+                    android:textColor="#88000000"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        
+    </ScrollView>
+
+</RelativeLayout>

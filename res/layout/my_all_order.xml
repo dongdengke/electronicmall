@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_collection_not_empty"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+           >
+
+            <TextView
+                android:id="@+id/btn_my_allorder_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="我的所有订单"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/iv_devider"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/btn_my_allorder_info"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/category_listview_divider" />
+
+            <ListView
+                android:id="@+id/lv_my_allorder"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_devider"
+                android:layout_marginTop="10dp" >
+            </ListView>
+        </RelativeLayout>
+
+<!--         <RelativeLayout -->
+      
+<!--             android:layout_width="fill_parent" -->
+<!--              android:visibility="invisible"  -->
+<!--             android:layout_height="fill_parent" > -->
+
+<!--             <LinearLayout -->
+<!--                       android:id="@+id/rl_collection_empty" -->
+<!--                 android:layout_width="fill_parent" -->
+<!--                 android:layout_height="fill_parent" -->
+<!--                 android:gravity="center" -->
+<!--                 android:orientation="vertical" > -->
+
+<!--                 <ImageView -->
+<!--                     android:id="@+id/iv_no_collection" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:background="@drawable/no_collection" /> -->
+
+<!--                 <TextView -->
+<!--                     android:id="@+id/tv_collention_info1" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:layout_below="@id/iv_no_collection" -->
+<!--                     android:layout_marginTop="15dp" -->
+<!--                     android:text="还没有任何收藏信息，赶快去看看吧！" -->
+<!--                     android:textColor="#88000000" /> -->
+<!--             </LinearLayout> -->
+<!--         </RelativeLayout> -->
+    </FrameLayout>
+
+</LinearLayout>
