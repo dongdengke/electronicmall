@@ -343,6 +343,7 @@ public class GoodInfoView extends BaseView {
 			long rawId = cartDao.addGood(database, cart);
 			if (rawId != -1) {
 				Toast.makeText(context, "添加成功", Toast.LENGTH_SHORT).show();
+				GlobalData.CARTID = rawId;
 				UIManager.getInstance().changeVew(CartView.class, bundle);
 			}
 		}

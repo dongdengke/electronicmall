@@ -47,6 +47,25 @@ public class CartView extends BaseView {
 		showView = (ViewGroup) View.inflate(context, R.layout.cart, null);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
+		TitleManager.getInstance().getBtn_name()
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						UIManager.getInstance().changeVew(HomeView.class,
+								bundle);
+					}
+				});
+		// 生成订单
+		TitleManager.getInstance().getBtn_name_right()
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// 把购物车id传递到下一个界面
+						UIManager.getInstance().changeVew(
+								SelectAddressView.class, bundle);
+					}
+				});
 		linerlayout_cart_empty = (LinearLayout) showView
 				.findViewById(R.id.linerlayout_cart_empty);
 		linerlayout_cart_not_empty = (LinearLayout) showView
@@ -77,26 +96,7 @@ public class CartView extends BaseView {
 					GlobalData.GOODCOUNT);
 			GlobalData.goods.add(good);
 		}
-		TitleManager.getInstance().getBtn_name()
-				.setOnClickListener(new OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						UIManager.getInstance().changeVew(HomeView.class,
-								bundle);
-					}
-				});
-		// 生成订单
-		TitleManager.getInstance().getBtn_name_right()
-				.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						// 把购物车id传递到下一个界面
-						UIManager.getInstance().changeVew(
-								SelectAddressView.class, bundle);
-					}
-				});
 	}
 
 	@Override

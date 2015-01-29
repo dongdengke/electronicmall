@@ -69,13 +69,13 @@ public class OrderView extends BaseView {
 
 					@Override
 					public void onClick(View v) {
-						// TODO Auto-generated method stub
 						UIManager.getInstance().changeVew(HomeView.class,
 								bundle);
 					}
 				});
 		addressId = bundle.getInt("addressId");
 		cartId = (int) GlobalData.CARTID;
+		System.out.println("cartId+---------" + cartId);
 		address = addressDao.queryAddressByAddressId(database, addressId);
 		cartDao = new CartDao();
 		cart = cartDao.queryCartByCartId(database, cartId);
@@ -131,11 +131,6 @@ public class OrderView extends BaseView {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				// tv_order_good_totalcount.setText(cart.getCount() + "");
-				// tv_order_good_money.setText(cart.getTotalMoney() + "");
-				// tv_order_good_fare.setText(good.getFare() + "");
-				// tv_order_totalmoney.setText(cart.getTotalMoney()
-				// + good.getFare() + "");
 				orderlist = new Orderlist();
 				orderlist.setUserId(GlobalData.LOGIN_SUCCES);
 				orderlist.setGoodId(goodId);

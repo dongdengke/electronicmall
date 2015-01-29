@@ -46,8 +46,8 @@ public class SelectAddressView extends BaseView {
 				null);
 		database = SQLiteDatabase.openDatabase(GloableParams.PATH, null,
 				SQLiteDatabase.OPEN_READWRITE);
-		TitleManager.getInstance().showTwoText();
-		TitleManager.getInstance().setLeftButtonText("返回");
+		TitleManager.getInstance().showOneText();
+		TitleManager.getInstance().setButtonText("返回");
 		TitleManager.getInstance().setOneText("选择地址");
 		TitleManager.getInstance().getBtn_name()
 				.setOnClickListener(new OnClickListener() {
@@ -55,6 +55,7 @@ public class SelectAddressView extends BaseView {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+
 						UIManager.getInstance().changeVew(HomeView.class,
 								bundle);
 					}
