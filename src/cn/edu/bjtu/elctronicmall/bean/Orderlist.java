@@ -51,7 +51,22 @@ public class Orderlist {
 	 * 发票id
 	 */
 	private Integer receiptId;
+	/**
+	 * 地址id
+	 */
 	private Integer addressId;
+	/**
+	 * 购物车id
+	 */
+	private Integer cartId;
+
+	public Integer getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(Integer cartId) {
+		this.cartId = cartId;
+	}
 
 	public Integer getAddressId() {
 		return addressId;

@@ -9,7 +9,11 @@ import android.widget.TextView;
 import cn.edu.bjtu.elctronicmall.GloableParams;
 import cn.edu.bjtu.elctronicmall.R;
 import cn.edu.bjtu.elctronicmall.bean.Address;
+import cn.edu.bjtu.elctronicmall.bean.Cart;
+import cn.edu.bjtu.elctronicmall.bean.Good;
 import cn.edu.bjtu.elctronicmall.dao.AddressDao;
+import cn.edu.bjtu.elctronicmall.dao.CartDao;
+import cn.edu.bjtu.elctronicmall.dao.GoodDao;
 import cn.edu.bjtu.elctronicmall.global.GlobalData;
 import cn.edu.bjtu.elctronicmall.manager.TitleManager;
 
@@ -30,6 +34,10 @@ public class OrderItemView extends BaseView {
 	private TextView tv_orderitem_order_totalmoney;
 	private AddressDao addressDao;
 	private Address address;
+	private CartDao cartDao;
+	private Cart cart;
+	private GoodDao goodDao;
+	private Good good;
 
 	public OrderItemView(final Context context, final Bundle bundle) {
 		super(context, bundle);
@@ -50,6 +58,7 @@ public class OrderItemView extends BaseView {
 				.findViewById(R.id.tv_orderitem_order_phone);
 		tv_orderitem_order_detail = (TextView) showView
 				.findViewById(R.id.tv_orderitem_order_detail);
+
 		tv_orderitem_order_good_name = (TextView) showView
 				.findViewById(R.id.tv_orderitem_order_good_name);
 		tv_orderitem_order_good_count = (TextView) showView
@@ -58,6 +67,7 @@ public class OrderItemView extends BaseView {
 				.findViewById(R.id.tv_orderitem_order_good_newprice);
 		tv_orderitem_order_good_totalmoney = (TextView) showView
 				.findViewById(R.id.tv_orderitem_order_good_totalmoney);
+
 		tv_orderitem_order_good_totalcount = (TextView) showView
 				.findViewById(R.id.tv_orderitem_order_good_totalcount);
 		tv_orderitem_order_good_money = (TextView) showView
@@ -73,6 +83,25 @@ public class OrderItemView extends BaseView {
 		tv_orderitem_order_name.setText(address.getName());
 		tv_orderitem_order_phone.setText(address.getPhone());
 		tv_orderitem_order_detail.setText(address.getDetailInfo());
+		int cartId = bundle.getInt("cartId");
+		cartDao = new CartDao();
+		cart = cartDao.queryCartByCartId(database, cartId);
+		double totalMoney = cart.getTotalMoney();
+		int count = cart.getCount();
+		goodDao = new GoodDao(context);
+		int goodId = bundle.getInt("goodId");
+		good = goodDao.findGoodById(database, goodId);
+		System.out.println(good.getName() + "================");
+		tv_orderitem_order_good_name.setText(good.getName());
+		tv_orderitem_order_good_newprice.setText(good.getNewprice() + "");
+		tv_orderitem_order_good_count.setText(count + "");
+		tv_orderitem_order_good_totalmoney.setText(totalMoney + "");
+		tv_orderitem_order_good_totalcount.setText(count + "");
+		tv_orderitem_order_good_money.setText(totalMoney + "");
+		tv_orderitem_order_good_fare.setText(good.getFare() + "");
+		double total = totalMoney + good.getFare();
+		tv_orderitem_order_totalmoney.setText(total + "");
+
 	}
 
 	@Override

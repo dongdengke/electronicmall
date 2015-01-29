@@ -52,6 +52,7 @@ public class OrderView extends BaseView {
 	private TextView tv_order_good_fare;
 	private TextView tv_order_totalmoney;
 	private Orderlist orderlist;
+	private int cartId;
 
 	public OrderView(final Context context, final Bundle bundle) {
 		super(context, bundle);
@@ -64,7 +65,7 @@ public class OrderView extends BaseView {
 		TitleManager.getInstance().setLeftButtonText("返回");
 		TitleManager.getInstance().setRightButtonText("结算");
 		addressId = bundle.getInt("addressId");
-		int cartId = (int) GlobalData.CARTID;
+		cartId = (int) GlobalData.CARTID;
 		address = addressDao.queryAddressByAddressId(database, addressId);
 		cartDao = new CartDao();
 		cart = cartDao.queryCartByCartId(database, cartId);
@@ -120,24 +121,21 @@ public class OrderView extends BaseView {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				tv_order_good_totalcount.setText(cart.getCount() + "");
-				tv_order_good_money.setText(cart.getTotalMoney() + "");
-				tv_order_good_fare.setText(good.getFare() + "");
-				tv_order_totalmoney.setText(cart.getTotalMoney()
-						+ good.getFare() + "");
+				// tv_order_good_totalcount.setText(cart.getCount() + "");
+				// tv_order_good_money.setText(cart.getTotalMoney() + "");
+				// tv_order_good_fare.setText(good.getFare() + "");
+				// tv_order_totalmoney.setText(cart.getTotalMoney()
+				// + good.getFare() + "");
 				orderlist = new Orderlist();
 				orderlist.setUserId(GlobalData.LOGIN_SUCCES);
 				orderlist.setGoodId(goodId);
+				orderlist.setCartId(cartId);
 				orderlist.setAddressId(addressId);
 				orderlist.setOrderno(orderNoStr);
 				orderlist.setFlag(0);
 				OrderListDao orderListDao = new OrderListDao();
 				long rawId = orderListDao.addOrderList(database, orderlist);
 				if (rawId != -1) {
-					// Toast.makeText(context, "订单生成成功，去支付吧！",
-					// Toast.LENGTH_SHORT)
-					// .show();
-					// PromptManager
 					Builder builder = new AlertDialog.Builder(context);
 					builder.setTitle("付款提醒！");
 					builder.setMessage("订单生产成功，我们会尽快安排发货。取货时要带足够的现金哦！谢谢配合，祝您生活愉快！");

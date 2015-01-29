@@ -27,6 +27,7 @@ public class OrderListDao {
 		values.put("userId", orderlist.getUserId());
 		values.put("goodId", orderlist.getGoodId());
 		values.put("addressId", orderlist.getAddressId());
+		values.put("cartId", orderlist.getCartId());
 		values.put("orderno", orderlist.getOrderno());
 		values.put("flag", orderlist.getFlag());
 		return database.insert("orderlist", null, values);
@@ -44,14 +45,15 @@ public class OrderListDao {
 		List<Orderlist> orderlists = new ArrayList<Orderlist>();
 		Orderlist orderlist = null;
 		Cursor cursor = database.query("orderlist", new String[] { "id",
-				"goodId", "addressId", "orderno", "flag" }, "userId=?",
-				new String[] { userId + "" }, null, null, null);
+				"goodId", "addressId", "orderno", "flag", "cartId" },
+				"userId=?", new String[] { userId + "" }, null, null, null);
 		while (cursor.moveToNext()) {
 			int id = cursor.getInt(0);
 			int goodId = cursor.getInt(1);
 			int addressId = cursor.getInt(2);
 			String orderno = cursor.getString(3);
 			int flag = cursor.getInt(4);
+			int cartId = cursor.getInt(5);
 			orderlist = new Orderlist();
 			orderlist.setId(id);
 			orderlist.setGoodId(goodId);
@@ -59,6 +61,7 @@ public class OrderListDao {
 			orderlist.setUserId(userId);
 			orderlist.setOrderno(orderno);
 			orderlist.setFlag(flag);
+			orderlist.setCartId(cartId);
 			orderlists.add(orderlist);
 		}
 		cursor.close();

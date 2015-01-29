@@ -100,7 +100,7 @@ public class CartView extends BaseView {
 			cart.setCount(count);
 			GoodDao goodDao = new GoodDao(context);
 
-			long addGood = cartDao.addGood(database, cart);
+			int addGood = cartDao.addGood(database, cart);
 			GlobalData.CARTID = addGood;
 			// System.out.println(cart.getGoodId());
 			if (addGood != -1) {

@@ -62,6 +62,8 @@ public class MyAllOrderView extends BaseView {
 				bundle.putInt("orderAddressId", orderlist.getAddressId());
 				bundle.putInt("orderGoodId", orderlist.getGoodId());
 				bundle.putString("orderno", orderlist.getOrderno());
+				bundle.putInt("cartId", orderlist.getCartId());
+				bundle.putInt("goodId", orderlist.getGoodId());
 				UIManager.getInstance().changeVew(OrderItemView.class, bundle);
 			}
 		});

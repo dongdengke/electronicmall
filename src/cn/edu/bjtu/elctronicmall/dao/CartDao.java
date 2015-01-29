@@ -27,7 +27,7 @@ public class CartDao {
 	 * @param count
 	 * @return
 	 */
-	public long addGood(SQLiteDatabase database, Cart cart) {
+	public int addGood(SQLiteDatabase database, Cart cart) {
 		ContentValues values = new ContentValues();
 		values.put("userId", cart.getUserId());
 		values.put("totalMoney", cart.getTotalMoney());
@@ -35,7 +35,7 @@ public class CartDao {
 		values.put("count", cart.getCount());
 		values.put("goodId", cart.getGoodId());
 
-		return database.insert("cart", null, values);
+		return (int) database.insert("cart", null, values);
 
 	}
 

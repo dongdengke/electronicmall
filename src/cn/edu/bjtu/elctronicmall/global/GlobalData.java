@@ -116,5 +116,5 @@ public class GlobalData {
 	/**
 	 * 购物车id
 	 */
-	public static long CARTID;
+	public static int CARTID;
 }
